@@ -1,18 +1,15 @@
 <template>
-    <div :class="{ formClass, formErrorClass }">
-        <label :for="id" :class="labelClass">{{ labelText }}</label>
+    <div :class="[inputClass, { [`${inputClass}--error`]: error }]">
         <input
             :type="type"
             :value="modelValue"
             :id="id"
-            class="c--form-field-a__item"
-            :required="required"
-            :disabled="disabled"
+            :class="[inputClass + '__item']"
             @input="handleChange"
-            :maxlength="+maxlength"
+            :maxlength="maxlength"
             :placeholder="placeholder"
+            :required="required"
         />
-        <span v-if="errorText" :class="errorClass">{{ errorText }}</span>
     </div>
 </template>
 
@@ -20,19 +17,29 @@
 import { ref, watch } from "vue"
 
 const props = defineProps({
-    formClass: String,
-    id: String,
-    labelText: String,
-    labelClass: String,
-    type: String,
+    type: {
+        type: String,
+        default: "text",
+    },
     modelValue: String,
-    required: Boolean,
-    disabled: Boolean,
-    formErrorClass: String,
-    errorText: String,
-    errorClass: String,
-    maxlength: String,
-    placeholder: String,
+    id: String,
+    inputClass: String,
+    error: {
+        type: Boolean,
+        default: false,
+    },
+    maxlength: {
+        type: Number,
+        default: null,
+    },
+    placeholder: {
+        type: String,
+        default: null,
+    },
+    required: {
+        type: Boolean,
+        default: false,
+    },
 })
 
 const modelValue = ref(props.modelValue)

@@ -1,31 +1,39 @@
 <template>
-    <label :for="id" :class="labelClass">{{ labelText }}</label>
-    <div :class="formClass">
+    <div :class="[inputClass, { [`${inputClass}--error`]: error }]">
         <textarea
             v-model="modelValue"
             :id="id"
-            class="g--form-textarea-01__item"
+            :class="[inputClass + '__item']"
             :placeholder="placeholder"
             :rows="rows"
             @input="handleChange"
         ></textarea>
     </div>
-    <span v-if="errorText" :class="errorClass">{{ errorText }}</span>
 </template>
 
 <script setup>
 import { ref } from "vue"
 
 const props = defineProps({
-    formClass: String,
-    id: String,
-    labelText: String,
-    labelClass: String,
     modelValue: String,
-    placeholder: String,
-    rows: String,
-    errorText: String,
-    errorClass: String,
+    id: String,
+    inputClass: String,
+    rows: {
+        type: String,
+        default: "3",
+    },
+    placeholder: {
+        type: String,
+        default: null,
+    },
+    required: {
+        type: Boolean,
+        default: false,
+    },
+    error: {
+        type: Boolean,
+        default: false,
+    },
 })
 
 const modelValue = ref(props.modelValue)

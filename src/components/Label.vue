@@ -1,5 +1,5 @@
 <template>
-    <label :for="forId" :class="labelClass">{{ textLabel }}</label>
+    <label v-if="textLabel" :for="forId" :class="labelClass">{{ textLabel }}</label>
 </template>
 
 <script setup>

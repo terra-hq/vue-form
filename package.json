@@ -1,5 +1,5 @@
 {
-  "name": "vue-form",
+  "name": "@terra-hq/vue-form",
   "private": true,
   "version": "0.0.0",
   "type": "module",
