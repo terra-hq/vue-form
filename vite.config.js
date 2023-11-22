@@ -1,7 +1,22 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { resolve } from "path"
+import { defineConfig } from "vite"
+import vue from "@vitejs/plugin-vue"
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+    plugins: [vue()],
+    build: {
+        lib: {
+            entry: resolve(__dirname, "src/index.js"),
+            name: "vue-form",
+            fileName: (format) => `vue-form.${format}.js`,
+        },
+        rollupOptions: {
+            external: ["vue"],
+            output: {
+                globals: {
+                    vue: "Vue",
+                },
+            },
+        },
+    },
 })

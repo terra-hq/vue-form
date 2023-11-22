@@ -1,8 +1,18 @@
 {
   "name": "@terra-hq/vue-form",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/vue-form.umd.js",
+  "module": "./dist/vue-form.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-form.es.js",
+      "require": "./dist/vue-form.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
