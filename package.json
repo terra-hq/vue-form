@@ -1,5 +1,6 @@
 {
   "name": "@terra-hq/vue-form",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/vue-form.umd.js",

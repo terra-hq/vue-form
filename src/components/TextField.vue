@@ -13,7 +13,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup scoped>
 import { ref, watch } from "vue"
 
 const props = defineProps({
