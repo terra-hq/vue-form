@@ -7,9 +7,9 @@ import TextArea from "./components/TextArea.vue"
 
 export default {
     install: (app, options) => {
-        app.component("TextField", TextField)
         app.component("FormGroup", FormGroup)
         app.component("Label", Label)
+        app.component("TextField", TextField)
         app.component("Checkbox", Checkbox)
         app.component("ErrorAndHint", ErrorAndHint)
         app.component("TextArea", TextArea)

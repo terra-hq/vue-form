@@ -180,7 +180,7 @@ const v = {
   }
 }, T = {
   install: (e, t) => {
-    e.component("TextField", b), e.component("FormGroup", v), e.component("Label", p), e.component("Checkbox", q), e.component("ErrorAndHint", B), e.component("TextArea", w);
+    e.component("FormGroup", v), e.component("Label", p), e.component("TextField", b), e.component("Checkbox", q), e.component("ErrorAndHint", B), e.component("TextArea", w);
   }
 };
 export {
