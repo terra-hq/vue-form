@@ -6,7 +6,10 @@
 import { defineProps } from "vue"
 
 const { textLabel, forId, labelClass } = defineProps({
-    textLabel: String,
+    textLabel: {
+        type: String,
+        default: "",
+    },
     forId: String,
     labelClass: String,
 })

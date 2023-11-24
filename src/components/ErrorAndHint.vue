@@ -11,17 +11,11 @@ const props = defineProps({
         type: String,
         default: null,
     },
-    errorClass: {
-        type: String,
-        default: null,
-    },
+    errorClass: String,
     hintMessage: {
         type: String,
         default: null,
     },
-    hintClass: {
-        type: String,
-        default: null,
-    },
+    hintClass: String,
 })
 </script>
