@@ -5,7 +5,7 @@
 <script setup>
 import { defineProps } from "vue"
 
-const { textLabel, forId, labelClass } = defineProps({
+const props = defineProps({
     textLabel: {
         type: String,
         default: "",

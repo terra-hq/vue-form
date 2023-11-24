@@ -1,9 +1,9 @@
 <template>
-    <div :class="[inputClass, { [`${inputClass}--error`]: error }]">
+    <div :class="[textAreaClass, { [`${textAreaClass}--error`]: error }]">
         <textarea
             v-model="modelValue"
             :id="id"
-            :class="[inputClass + '__item']"
+            :class="[`${textAreaClass}__item`]"
             :placeholder="placeholder"
             :rows="rows"
             @input="handleChange"
@@ -17,7 +17,7 @@ import { ref } from "vue"
 const props = defineProps({
     modelValue: String,
     id: String,
-    inputClass: String,
+    textAreaClass: String,
     rows: {
         type: String,
         default: "3",

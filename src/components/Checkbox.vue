@@ -1,9 +1,9 @@
 <template>
-    <div :class="[inputClass, { [`${inputClass}--error`]: error }]">
+    <div :class="[checkboxClass, { [`${checkboxClass}--error`]: error }]">
         <input
             :id="id"
             type="checkbox"
-            :class="[inputClass + '__item']"
+            :class="[`${checkboxClass}__item`]"
             :required="required"
             :checked="modelValue"
             :value="modelValue"
@@ -16,7 +16,7 @@
 <script setup>
 const props = defineProps({
     id: String,
-    inputClass: String,
+    checkboxClass: String,
     modelValue: Boolean,
     error: {
         type: Boolean,

@@ -12,7 +12,7 @@ npm install @terrahq/vue-form
 
 #### Astro Project with Vue
 
-For projects using Astro with embedded Vue, create a file named \_app.ts and include the following code:
+For projects using Astro with embedded Vue, create a file named `\_app.ts` and include the following code:
 
 ```sh
 import type { App } from "vue";
@@ -22,15 +22,16 @@ import Label from "@terra-hq/vue-form";
 import Checkbox from "@terra-hq/vue-form";
 import ErrorAndHint from "@terra-hq/vue-form";
 import TextArea from "@terra-hq/vue-form";
+import Select from "@terra-hq/vue-form";
 
 export default (app: App) => {
-    app.use(VueLazyload);
     app.use(Label);
     app.use(FormGroup);
     app.use(TextField);
     app.use(Checkbox);
     app.use(ErrorAndHint);
     app.use(TextArea);
+    app.use(Select);
 };
 ```
 
@@ -58,6 +59,7 @@ import Label from "@terra-hq/vue-form"
 import Checkbox from "@terra-hq/vue-form"
 import ErrorAndHint from "@terra-hq/vue-form"
 import TextArea from "@terra-hq/vue-form"
+import Select from "@terra-hq/vue-form"
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(FormGroup)
@@ -66,6 +68,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(Checkbox)
     nuxtApp.vueApp.use(ErrorAndHint)
     nuxtApp.vueApp.use(TextArea)
+    nuxtApp.vueApp.use(Select)
 })
 ```
 
@@ -84,10 +87,31 @@ Now, you can use the components in any .vue file.
       id="firstName"
       inputClass="g--form-input-01"
       placeholder="First Name"
-      :error="inputError"
+      :error="error"
+      :required="required"
+      :maxlength="8"
     />
 
-    <Checkbox v-model="terms" id="terms" inputClass="g--form-checkbox-01" />
+    <Checkbox v-model="terms" id="terms" checkboxClass="g--form-checkbox-01" :error="error" required />
+
+     <Select
+        id="cars"
+        selectClass="g--form-select-01"
+        :options="selectOptions"
+        v-model="optionSelected"
+        :required="required"
+        :error="error"
+    />
+
+    <TextArea
+        v-model="textAreaValue"
+        id="comments"
+        textAreaClass="g--form-textarea-01"
+        rows="5"
+        placeholder="Comments"
+        :required="required"
+        :error="error"
+    />
 
     <ErrorAndHint
       :errorMessage="errorMessage"
@@ -97,6 +121,28 @@ Now, you can use the components in any .vue file.
     />
   </FormGroup>
 </template>
+
+<script setup>
+import { ref } from "vue"
+
+const firstName = ref("")
+const hintMessage = ref("")
+const errorMessage = ref("")
+const terms = ref(true)
+const error = ref(true)
+const textAreaValue = ref("")
+
+
+const selectOptions = ref([
+    { id: "volvo", label: "Volvo", disabled: false },
+    { id: "audi", label: "Audi", disabled: true },
+    { id: "mercedes", label: "Mercedes", disabled: false },
+    { id: "seat", label: "Seat", disabled: false },
+    { id: "bmw", label: "BMW", disabled: false },
+])
+
+const optionSelected = ref("seat")
+</script>
 
 ```
 
@@ -124,7 +170,9 @@ Now, you can use the components in any .vue file.
         -   **v-model**: (Required) Two-way binding for the input value.
         -   **id**: (Required) ID of the input element.
         -   **inputClass**: (Required) CSS class for styling the input.
+        -   **maxlength**: Maximum number of characters allowed in the input (Optional).
         -   **placeholder**: Placeholder text for the input (Optional - If not provided, placeholder will not be displayed).
+        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false).
 
 -   **Checkbox**
@@ -133,7 +181,31 @@ Now, you can use the components in any .vue file.
     -   Props:
         -   **v-model**: (Required) Two-way binding for the checkbox value.
         -   **id**: (Required) ID of the checkbox input.
-        -   **inputClass**: (Required) CSS class for styling the checkbox.
+        -   **checkboxClass**: (Required) CSS class for styling the checkbox.
+        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false).
+
+-   **Select**
+    The Select component represents a dropdown selection.
+
+    -   Props:
+        -   **id**: (Required) ID of the select element.
+        -   **selectClass**: (Required) CSS class for styling the select.
+        -   **options**: (Required) An array of objects representing the options in the select dropdown. Each object should have the properties `id` (value of the option), `label` (display label of the option) and `disabled` (optional - indicates if the option is disabled).
+        -   **v-model**: (Required) Two-way binding for the selected option's value.
+        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false).
+
+-   **TextArea**
+    The TextArea component represents a multiline text input.
+
+    -   Props:
+        -   **id**: (Required) ID of the textarea element.
+        -   **textAreaClass**: (Required) CSS class for styling the textarea.
+        -   **v-model**: (Required) Two-way binding for the textarea value.
+        -   **rows**: Number of rows for the textarea (Optional - Default is 3).
+        -   **placeholder**: Placeholder text for the textarea (Optional - If not provided, placeholder will not be displayed).
+        -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false).
 
 -   **ErrorAndHint**

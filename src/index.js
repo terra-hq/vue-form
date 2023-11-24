@@ -4,6 +4,7 @@ import TextField from "./components/TextField.vue"
 import Checkbox from "./components/Checkbox.vue"
 import ErrorAndHint from "./components/ErrorAndHint.vue"
 import TextArea from "./components/TextArea.vue"
+import Select from "./components/Select.vue"
 
 export default {
     install: (app, options) => {
@@ -13,5 +14,6 @@ export default {
         app.component("Checkbox", Checkbox)
         app.component("ErrorAndHint", ErrorAndHint)
         app.component("TextArea", TextArea)
+        app.component("Select", Select)
     },
 }

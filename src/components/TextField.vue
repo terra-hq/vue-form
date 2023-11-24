@@ -4,7 +4,7 @@
             :type="type"
             :value="modelValue"
             :id="id"
-            :class="[inputClass + '__item']"
+            :class="[`${inputClass}__item`]"
             @input="handleChange"
             :maxlength="maxlength"
             :placeholder="placeholder"
@@ -13,7 +13,7 @@
     </div>
 </template>
 
-<script setup scoped>
+<script setup>
 import { ref, watch } from "vue"
 
 const props = defineProps({
