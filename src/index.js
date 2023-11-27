@@ -5,6 +5,12 @@ import Checkbox from "./components/Checkbox.vue"
 import ErrorAndHint from "./components/ErrorAndHint.vue"
 import TextArea from "./components/TextArea.vue"
 import Select from "./components/Select.vue"
+import GroupCheckbox from "./components/GroupCheckbox.vue"
+
+import { createApp } from "vue"
+import App from "./App.vue"
+
+createApp(App).mount("#app")
 
 export default {
     install: (app, options) => {
@@ -15,5 +21,6 @@ export default {
         app.component("ErrorAndHint", ErrorAndHint)
         app.component("TextArea", TextArea)
         app.component("Select", Select)
+        app.component("GroupCheckbox", GroupCheckbox)
     },
 }

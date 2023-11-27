@@ -23,6 +23,7 @@ import Checkbox from "@terra-hq/vue-form";
 import ErrorAndHint from "@terra-hq/vue-form";
 import TextArea from "@terra-hq/vue-form";
 import Select from "@terra-hq/vue-form";
+import GroupCheckbox from "@terra-hq/vue-form";
 
 export default (app: App) => {
     app.use(Label);
@@ -32,6 +33,7 @@ export default (app: App) => {
     app.use(ErrorAndHint);
     app.use(TextArea);
     app.use(Select);
+    app.use(GroupCheckbox);
 };
 ```
 
@@ -60,6 +62,7 @@ import Checkbox from "@terra-hq/vue-form"
 import ErrorAndHint from "@terra-hq/vue-form"
 import TextArea from "@terra-hq/vue-form"
 import Select from "@terra-hq/vue-form"
+import GroupCheckbox from "@terra-hq/vue-form"
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(FormGroup)
@@ -69,6 +72,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(ErrorAndHint)
     nuxtApp.vueApp.use(TextArea)
     nuxtApp.vueApp.use(Select)
+    nuxtApp.vueApp.use(GroupCheckbox)
 })
 ```
 
@@ -103,6 +107,14 @@ Now, you can use the components in any .vue file.
         :error="error"
     />
 
+    <GroupCheckbox
+        :options="checkboxOptions"
+        v-model="groupTest"
+        groupClass="g--form-group-checkbox-01"
+        :error="error"
+        :required="required"
+    />
+
     <TextArea
         v-model="textAreaValue"
         id="comments"
@@ -134,14 +146,22 @@ const textAreaValue = ref("")
 
 
 const selectOptions = ref([
-    { id: "volvo", label: "Volvo", disabled: false },
-    { id: "audi", label: "Audi", disabled: true },
-    { id: "mercedes", label: "Mercedes", disabled: false },
-    { id: "seat", label: "Seat", disabled: false },
-    { id: "bmw", label: "BMW", disabled: false },
+    { id: "one", label: "One", disabled: false },
+    { id: "two", label: "Two", disabled: true },
+    { id: "three", label: "Three", disabled: false },
+    { id: "four", label: "Four", disabled: false },
+    { id: "five", label: "Five", disabled: false },
 ])
+const optionSelected = ref("one")
 
-const optionSelected = ref("seat")
+const checkboxOptions = ref([
+    { id: "one", label: "One" },
+    { id: "two", label: "Two" },
+    { id: "three", label: "Three" },
+    { id: "four", label: "Four" },
+    { id: "five", label: "Five" },
+])
+const optionsChecked = ref(["three", "four"])
 </script>
 
 ```
@@ -184,6 +204,16 @@ const optionSelected = ref("seat")
         -   **checkboxClass**: (Required) CSS class for styling the checkbox.
         -   **required**: Boolean value indicating whether the select is required (Optional - Default is false).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false).
+
+-   **Group of checkbox**
+    The GroupCheckbox component allows users to select multiple options from a list.
+
+    -   Props:
+        -   **options**: (Required) An array of objects representing the options in the checkbox group. Each object should have the properties id (value of the option) and label (display label of the option).
+        -   **v-model**: (Required) Two-way binding for the selected options' values. (Array of strings).
+        -   **groupClass**: (Required) CSS class for styling the checkbox group.
+        -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added to each checkbox individually (Optional - Default is false).
 
 -   **Select**
     The Select component represents a dropdown selection.

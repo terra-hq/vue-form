@@ -7,7 +7,6 @@
             :required="required"
             :checked="modelValue"
             :value="modelValue"
-            :error="error"
             @change="$emit('update:modelValue', !modelValue)"
         />
     </div>
