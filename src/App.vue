@@ -22,6 +22,22 @@
             :required="required"
         />
 
+        <GroupCheckbox
+            :options="checkboxOptions"
+            v-model="optionsChecked"
+            checkboxClass="g--form-checkbox-01"
+            :error="error"
+            :required="required"
+        />
+
+        <GroupRadio
+            :options="radioOptions"
+            v-model="radioSelected"
+            radioClass="g--form-radio-01"
+            :error="error"
+            :required="required"
+        />
+
         <Select
             id="cars"
             selectClass="g--form-select-01"
@@ -39,22 +55,6 @@
             placeholder="Comments"
             :required="required"
             :error="error"
-        />
-
-        <GroupCheckbox
-            :options="checkboxOptions"
-            v-model="optionsChecked"
-            checkboxClass="g--form-checkbox-01"
-            :error="error"
-            :required="required"
-        />
-
-        <GroupRadio
-            :options="radioOptions"
-            v-model="radioSelected"
-            radioClass="g--form-radio-01"
-            :error="error"
-            :required="required"
         />
 
         <ErrorAndHint
@@ -79,21 +79,8 @@ import ErrorAndHint from "./components/ErrorAndHint.vue"
 import { ref } from "vue"
 
 const firstName = ref("")
-const hintMessage = ref("")
-const errorMessage = ref("")
-const terms = ref(true)
-const error = ref(true)
-const required = ref(false)
-const textAreaValue = ref("")
 
-const selectOptions = ref([
-    { id: "volvo", label: "Volvo", disabled: false },
-    { id: "audi", label: "Audi", disabled: true },
-    { id: "mercedes", label: "Mercedes", disabled: false },
-    { id: "seat", label: "Seat", disabled: false },
-    { id: "bmw", label: "BMW", disabled: false },
-])
-const optionSelected = ref("seat")
+const terms = ref(true)
 
 const checkboxOptions = ref([
     { id: "one", label: "One" },
@@ -112,4 +99,21 @@ const radioOptions = ref([
     { id: "ten", label: "Ten" },
 ])
 const radioSelected = ref("")
+
+const selectOptions = ref([
+    { id: "volvo", label: "Volvo", disabled: false },
+    { id: "audi", label: "Audi", disabled: true },
+    { id: "mercedes", label: "Mercedes", disabled: false },
+    { id: "seat", label: "Seat", disabled: false },
+    { id: "bmw", label: "BMW", disabled: false },
+])
+const optionSelected = ref("seat")
+
+const textAreaValue = ref("")
+
+const error = ref(true)
+const required = ref(false)
+
+const hintMessage = ref("")
+const errorMessage = ref("")
 </script>

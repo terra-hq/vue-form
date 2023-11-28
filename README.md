@@ -17,25 +17,25 @@ For projects using Astro with embedded Vue, create a file named `\_app.ts` and i
 ```sh
 import type { App } from "vue";
 import FormGroup from "@terra-hq/vue-form";
-import TextField from "@terra-hq/vue-form";
 import Label from "@terra-hq/vue-form";
+import TextField from "@terra-hq/vue-form";
 import Checkbox from "@terra-hq/vue-form";
-import ErrorAndHint from "@terra-hq/vue-form";
-import TextArea from "@terra-hq/vue-form";
-import Select from "@terra-hq/vue-form";
 import GroupCheckbox from "@terra-hq/vue-form";
 import GroupRadio from "@terra-hq/vue-form";
+import Select from "@terra-hq/vue-form";
+import TextArea from "@terra-hq/vue-form";
+import ErrorAndHint from "@terra-hq/vue-form";
 
 export default (app: App) => {
-    app.use(Label);
     app.use(FormGroup);
+    app.use(Label);
     app.use(TextField);
     app.use(Checkbox);
-    app.use(ErrorAndHint);
-    app.use(TextArea);
-    app.use(Select);
     app.use(GroupCheckbox);
     app.use(GroupRadio);
+    app.use(Select);
+    app.use(TextArea);
+    app.use(ErrorAndHint);
 };
 ```
 
@@ -58,25 +58,25 @@ For Nuxt projects, create a 'Plugins' folder at the root, and within it, create 
 
 ```sh
 import FormGroup from "@terra-hq/vue-form"
-import TextField from "@terra-hq/vue-form"
 import Label from "@terra-hq/vue-form"
+import TextField from "@terra-hq/vue-form"
 import Checkbox from "@terra-hq/vue-form"
-import ErrorAndHint from "@terra-hq/vue-form"
-import TextArea from "@terra-hq/vue-form"
-import Select from "@terra-hq/vue-form"
 import GroupCheckbox from "@terra-hq/vue-form"
 import GroupRadio from "@terra-hq/vue-form"
+import Select from "@terra-hq/vue-form"
+import TextArea from "@terra-hq/vue-form"
+import ErrorAndHint from "@terra-hq/vue-form"
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(FormGroup)
     nuxtApp.vueApp.use(Label)
     nuxtApp.vueApp.use(TextField)
     nuxtApp.vueApp.use(Checkbox)
-    nuxtApp.vueApp.use(ErrorAndHint)
-    nuxtApp.vueApp.use(TextArea)
-    nuxtApp.vueApp.use(Select)
     nuxtApp.vueApp.use(GroupCheckbox)
     nuxtApp.vueApp.use(GroupRadio)
+    nuxtApp.vueApp.use(Select)
+    nuxtApp.vueApp.use(TextArea)
+    nuxtApp.vueApp.use(ErrorAndHint)
 })
 ```
 
@@ -109,16 +109,7 @@ Now, you can use the components in any .vue file.
         :required="required"
      />
 
-     <Select
-        id="cars"
-        selectClass="g--form-select-01"
-        :options="selectOptions"
-        v-model="optionSelected"
-        :required="required"
-        :error="error"
-    />
-
-    <GroupCheckbox
+     <GroupCheckbox
         :options="checkboxOptions"
         v-model="optionsChecked"
         checkboxClass="g--form-checkbox-01"
@@ -132,6 +123,15 @@ Now, you can use the components in any .vue file.
         radioClass="g--form-radio-01"
         :error="error"
         :required="required"
+    />
+
+     <Select
+        id="cars"
+        selectClass="g--form-select-01"
+        :options="selectOptions"
+        v-model="optionSelected"
+        :required="required"
+        :error="error"
     />
 
     <TextArea
@@ -159,31 +159,8 @@ import { ref } from "vue"
 // TextField
 const firstName = ref("")
 
-// Error and Hint
-const hintMessage = ref("")
-const errorMessage = ref("")
-
 // Checkbox
 const terms = ref(true)
-
-// TextArea
-const textAreaValue = ref("")
-
-// Error for inputs
-const error = ref(true)
-
-// Required for inputs
-const required = ref(false)
-
-// Select
-const selectOptions = ref([
-    { id: "one", label: "One", disabled: false },
-    { id: "two", label: "Two", disabled: true },
-    { id: "three", label: "Three", disabled: false },
-    { id: "four", label: "Four", disabled: false },
-    { id: "five", label: "Five", disabled: false },
-])
-const optionSelected = ref("one")
 
 // Group of checkboxes
 const checkboxOptions = ref([
@@ -204,6 +181,29 @@ const radioOptions = ref([
     { id: "ten", label: "Ten" },
 ])
 const radioSelected = ref("")
+
+// Select
+const selectOptions = ref([
+    { id: "one", label: "One", disabled: false },
+    { id: "two", label: "Two", disabled: true },
+    { id: "three", label: "Three", disabled: false },
+    { id: "four", label: "Four", disabled: false },
+    { id: "five", label: "Five", disabled: false },
+])
+const optionSelected = ref("one")
+
+// TextArea
+const textAreaValue = ref("")
+
+// Error for inputs
+const error = ref(true)
+
+// Required for inputs
+const required = ref(false)
+
+// Error and Hint
+const hintMessage = ref("")
+const errorMessage = ref("")
 </script>
 
 ```
