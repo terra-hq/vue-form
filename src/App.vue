@@ -17,10 +17,10 @@
             v-model="terms"
             id="terms"
             checkboxClass="g--form-checkbox-01"
+            textLabel="Accept Terms and conditions"
             :error="error"
-            required
+            :required="required"
         />
-        {{ terms }}
 
         <Select
             id="cars"
@@ -43,8 +43,16 @@
 
         <GroupCheckbox
             :options="checkboxOptions"
-            v-model="groupTest"
-            groupClass="g--form-group-checkbox-01"
+            v-model="optionsChecked"
+            checkboxClass="g--form-checkbox-01"
+            :error="error"
+            :required="required"
+        />
+
+        <GroupRadio
+            :options="radioOptions"
+            v-model="radioSelected"
+            radioClass="g--form-radio-01"
             :error="error"
             :required="required"
         />
@@ -66,6 +74,7 @@ import Checkbox from "./components/Checkbox.vue"
 import Select from "./components/Select.vue"
 import TextArea from "./components/TextArea.vue"
 import GroupCheckbox from "./components/GroupCheckbox.vue"
+import GroupRadio from "./components/GroupRadio.vue"
 import ErrorAndHint from "./components/ErrorAndHint.vue"
 import { ref } from "vue"
 
@@ -84,15 +93,23 @@ const selectOptions = ref([
     { id: "seat", label: "Seat", disabled: false },
     { id: "bmw", label: "BMW", disabled: false },
 ])
+const optionSelected = ref("seat")
 
 const checkboxOptions = ref([
-    { id: "volvo", label: "Volvo" },
-    { id: "audi", label: "Audi" },
-    { id: "mercedes", label: "Mercedes" },
-    { id: "seat", label: "Seat" },
-    { id: "bmw", label: "BMW" },
+    { id: "one", label: "One" },
+    { id: "two", label: "Two" },
+    { id: "three", label: "Three" },
+    { id: "four", label: "Four" },
+    { id: "five", label: "Five" },
 ])
-const groupTest = ref(["volvo", "mercedes"])
+const optionsChecked = ref(["three", "four"])
 
-const optionSelected = ref("seat")
+const radioOptions = ref([
+    { id: "six", label: "Six" },
+    { id: "seven", label: "Seven" },
+    { id: "eight", label: "Eight" },
+    { id: "nine", label: "Nine" },
+    { id: "ten", label: "Ten" },
+])
+const radioSelected = ref("")
 </script>

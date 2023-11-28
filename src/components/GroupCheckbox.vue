@@ -1,26 +1,24 @@
 <template>
-    <div v-for="(option, index) in options" :key="index" :class="groupClass">
-        <Checkbox
-            v-model="selectedValues[index].checked"
-            :id="option.id"
-            checkboxClass="g--form-checkbox-01"
-            :error="error"
-            :required="required"
-        />
-
-        <Label :forId="option.id" labelClass="g--form-label-01" :textLabel="option.label" />
-    </div>
+    <Checkbox
+        v-for="(option, index) in options"
+        :key="index"
+        v-model="selectedValues[index].checked"
+        :id="option.id"
+        :checkboxClass="checkboxClass"
+        :error="error"
+        :required="required"
+        :textLabel="option.label"
+    />
 </template>
 
 <script setup>
 import { reactive, ref, watch } from "vue"
 import Checkbox from "./Checkbox.vue"
-import Label from "./Label.vue"
 
 const props = defineProps({
     options: Array, // { id: string; label: string }[]
     modelValue: Array, // string[]
-    groupClass: String,
+    checkboxClass: String,
     error: {
         type: Boolean,
         default: false,

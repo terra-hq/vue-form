@@ -24,6 +24,7 @@ import ErrorAndHint from "@terra-hq/vue-form";
 import TextArea from "@terra-hq/vue-form";
 import Select from "@terra-hq/vue-form";
 import GroupCheckbox from "@terra-hq/vue-form";
+import GroupRadio from "@terra-hq/vue-form";
 
 export default (app: App) => {
     app.use(Label);
@@ -34,6 +35,7 @@ export default (app: App) => {
     app.use(TextArea);
     app.use(Select);
     app.use(GroupCheckbox);
+    app.use(GroupRadio);
 };
 ```
 
@@ -63,6 +65,7 @@ import ErrorAndHint from "@terra-hq/vue-form"
 import TextArea from "@terra-hq/vue-form"
 import Select from "@terra-hq/vue-form"
 import GroupCheckbox from "@terra-hq/vue-form"
+import GroupRadio from "@terra-hq/vue-form"
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(FormGroup)
@@ -73,6 +76,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(TextArea)
     nuxtApp.vueApp.use(Select)
     nuxtApp.vueApp.use(GroupCheckbox)
+    nuxtApp.vueApp.use(GroupRadio)
 })
 ```
 
@@ -96,7 +100,14 @@ Now, you can use the components in any .vue file.
       :maxlength="8"
     />
 
-    <Checkbox v-model="terms" id="terms" checkboxClass="g--form-checkbox-01" :error="error" required />
+     <Checkbox
+        v-model="terms"
+        id="terms"
+        checkboxClass="g--form-checkbox-01"
+        textLabel="Accept Terms and conditions"
+        :error="error"
+        :required="required"
+     />
 
      <Select
         id="cars"
@@ -109,8 +120,16 @@ Now, you can use the components in any .vue file.
 
     <GroupCheckbox
         :options="checkboxOptions"
-        v-model="groupTest"
-        groupClass="g--form-group-checkbox-01"
+        v-model="optionsChecked"
+        checkboxClass="g--form-checkbox-01"
+        :error="error"
+        :required="required"
+    />
+
+    <GroupRadio
+        :options="radioOptions"
+        v-model="radioSelected"
+        radioClass="g--form-radio-01"
         :error="error"
         :required="required"
     />
@@ -137,14 +156,26 @@ Now, you can use the components in any .vue file.
 <script setup>
 import { ref } from "vue"
 
+// TextField
 const firstName = ref("")
+
+// Error and Hint
 const hintMessage = ref("")
 const errorMessage = ref("")
+
+// Checkbox
 const terms = ref(true)
-const error = ref(true)
+
+// TextArea
 const textAreaValue = ref("")
 
+// Error for inputs
+const error = ref(true)
 
+// Required for inputs
+const required = ref(false)
+
+// Select
 const selectOptions = ref([
     { id: "one", label: "One", disabled: false },
     { id: "two", label: "Two", disabled: true },
@@ -154,6 +185,7 @@ const selectOptions = ref([
 ])
 const optionSelected = ref("one")
 
+// Group of checkboxes
 const checkboxOptions = ref([
     { id: "one", label: "One" },
     { id: "two", label: "Two" },
@@ -162,6 +194,16 @@ const checkboxOptions = ref([
     { id: "five", label: "Five" },
 ])
 const optionsChecked = ref(["three", "four"])
+
+// Group of radio
+const radioOptions = ref([
+    { id: "six", label: "Six" },
+    { id: "seven", label: "Seven" },
+    { id: "eight", label: "Eight" },
+    { id: "nine", label: "Nine" },
+    { id: "ten", label: "Ten" },
+])
+const radioSelected = ref("")
 </script>
 
 ```
@@ -172,80 +214,91 @@ const optionsChecked = ref(["three", "four"])
     The FormGroup component is used to wrap other form components. It allows you to apply a common styling to the entire form group.
 
     -   Props:
-        -   **formClass**: (Required) CSS class for styling the form group.
+        -   **formClass**: (Required) CSS class for styling the form group - [String].
 
 -   **Label**
     The Label component represents the label for an input element.
 
     -   Props:
-        -   **forId**: (Required) ID of the associated input element.
-        -   **labelClass**: (Required) CSS class for styling the label.
-        -   **textLabel**: Text content of the label (Optional - If not provided, label will not be displayed).
+        -   **forId**: (Required) ID of the associated input element - (String).
+        -   **labelClass**: (Required) CSS class for styling the label - (String).
+        -   **textLabel**: Text content of the label (Optional - If not provided, label will not be displayed) - (String).
 
 -   **TextField**
     The TextField component represents a text input.
 
     -   Props:
-        -   **type**: Input type (Optional - Default is "text").
-        -   **v-model**: (Required) Two-way binding for the input value.
-        -   **id**: (Required) ID of the input element.
-        -   **inputClass**: (Required) CSS class for styling the input.
-        -   **maxlength**: Maximum number of characters allowed in the input (Optional).
-        -   **placeholder**: Placeholder text for the input (Optional - If not provided, placeholder will not be displayed).
-        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false).
-        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false).
+        -   **type**: Input type (Optional - Default is "text") - (String).
+        -   **v-model**: (Required) Two-way binding for the input value - (String).
+        -   **id**: (Required) ID of the input element - (String).
+        -   **inputClass**: (Required) CSS class for styling the input - (String).
+        -   **maxlength**: Maximum number of characters allowed in the input (Optional) - (Number).
+        -   **placeholder**: Placeholder text for the input (Optional - If not provided, placeholder will not be displayed) - (String).
+        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false) - (Boolean).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
 -   **Checkbox**
     The Checkbox component represents a checkbox input.
 
     -   Props:
-        -   **v-model**: (Required) Two-way binding for the checkbox value.
-        -   **id**: (Required) ID of the checkbox input.
-        -   **checkboxClass**: (Required) CSS class for styling the checkbox.
-        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false).
-        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false).
+        -   **v-model**: (Required) Two-way binding for the checkbox value - (Boolean).
+        -   **id**: (Required) ID of the checkbox input - (String).
+        -   **checkboxClass**: (Required) CSS class for styling the checkbox - (String).
+        -   **textLabel**: Text content of the label (Optional - If not provided, label will not be displayed) - (String).
+        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false) - (Boolean).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
 -   **Group of checkbox**
     The GroupCheckbox component allows users to select multiple options from a list.
 
     -   Props:
-        -   **options**: (Required) An array of objects representing the options in the checkbox group. Each object should have the properties id (value of the option) and label (display label of the option).
-        -   **v-model**: (Required) Two-way binding for the selected options' values. (Array of strings).
-        -   **groupClass**: (Required) CSS class for styling the checkbox group.
-        -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false).
-        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added to each checkbox individually (Optional - Default is false).
+        -   **options**: (Required) An array of objects representing the options in the checkbox group. Each object should have the properties id (value of the option) and label (display label of the option) - ({id: String, label: String}[ ]).
+        -   **v-model**: (Required) Two-way binding for the selected options' values - (String[ ]).
+        -   **groupClass**: (Required) CSS class for styling the checkbox group - (String).
+        -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false) - (Boolean).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added to each checkbox individually (Optional - Default is false) - (Boolean).
+
+-   **Group of radio buttons**
+    The GroupRadio component allows users to select a single option from a list of radio buttons.
+
+    -   Props:
+        -   **options**: (Required) An array of objects representing the options in the radio button group. Each object should have the properties `id` (value of the option) and `label` (display label of the option) - [{id: String, label: String}[]].
+        -   **v-model**: (Required) Two-way binding for the selected option's value - (String).
+        -   **radioClass**: (Required) CSS class for styling the radio button group - (String).
+        -   **required**: Boolean value indicating whether the radio button group is required (Optional - Default is false) - (Boolean).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - Boolean.
 
 -   **Select**
     The Select component represents a dropdown selection.
 
     -   Props:
-        -   **id**: (Required) ID of the select element.
-        -   **selectClass**: (Required) CSS class for styling the select.
-        -   **options**: (Required) An array of objects representing the options in the select dropdown. Each object should have the properties `id` (value of the option), `label` (display label of the option) and `disabled` (optional - indicates if the option is disabled).
-        -   **v-model**: (Required) Two-way binding for the selected option's value.
-        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false).
-        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false).
+        -   **id**: (Required) ID of the select element - (String).
+        -   **selectClass**: (Required) CSS class for styling the select - (String).
+        -   **options**: (Required) An array of objects representing the options in the select dropdown. Each object should have the properties `id` (value of the option), `label` (display label of the option) and `disabled` (optional - indicates if the option is disabled) - [{id: String, label: String, disabled: Boolean}[]].
+        -   **v-model**: (Required) Two-way binding for the selected option's value - (String).
+        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false) - (Boolean).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
 -   **TextArea**
     The TextArea component represents a multiline text input.
 
     -   Props:
-        -   **id**: (Required) ID of the textarea element.
-        -   **textAreaClass**: (Required) CSS class for styling the textarea.
-        -   **v-model**: (Required) Two-way binding for the textarea value.
-        -   **rows**: Number of rows for the textarea (Optional - Default is 3).
-        -   **placeholder**: Placeholder text for the textarea (Optional - If not provided, placeholder will not be displayed).
-        -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false).
-        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false).
+        -   **id**: (Required) ID of the textarea element - (String).
+        -   **textAreaClass**: (Required) CSS class for styling the textarea - (String).
+        -   **v-model**: (Required) Two-way binding for the textarea value - (String).
+        -   **rows**: Number of rows for the textarea (Optional - Default is 3) - (Number).
+        -   **placeholder**: Placeholder text for the textarea (Optional - If not provided, placeholder will not be displayed) - (String).
+        -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false) - (Boolean).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
 -   **ErrorAndHint**
     The ErrorAndHint component displays an error message and/or a hint message.
 
     -   Props:
-        -   **errorMessage**: Error message to be displayed (Optional - If not provided, error message will not be displayed).
-        -   **errorClass**: (Required) CSS class for styling the error message.
-        -   **hintMessage**: Hint message to be displayed (Optional - If not provided, hint message will not be displayed).
-        -   **hintClass**: (Required) CSS class for styling the hint message.
+        -   **errorMessage**: Error message to be displayed (Optional - If not provided, error message will not be displayed) - (String).
+        -   **errorClass**: (Required) CSS class for styling the error message - (String).
+        -   **hintMessage**: Hint message to be displayed (Optional - If not provided, hint message will not be displayed) - (String).
+        -   **hintClass**: (Required) CSS class for styling the hint message - (String).
 
 #### Note:
 

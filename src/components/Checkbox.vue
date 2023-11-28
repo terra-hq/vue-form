@@ -9,14 +9,21 @@
             :value="modelValue"
             @change="$emit('update:modelValue', !modelValue)"
         />
+        <Label :forId="id" :labelClass="[`${checkboxClass}__title`]" :textLabel="textLabel" />
     </div>
 </template>
 
 <script setup>
+import Label from "./Label.vue"
+
 const props = defineProps({
     id: String,
     checkboxClass: String,
     modelValue: Boolean,
+    textLabel: {
+        type: String,
+        default: "",
+    },
     error: {
         type: Boolean,
         default: false,

@@ -6,6 +6,7 @@ import ErrorAndHint from "./components/ErrorAndHint.vue"
 import TextArea from "./components/TextArea.vue"
 import Select from "./components/Select.vue"
 import GroupCheckbox from "./components/GroupCheckbox.vue"
+import GroupRadio from "./components/GroupRadio.vue"
 
 import { createApp } from "vue"
 import App from "./App.vue"
@@ -22,5 +23,6 @@ export default {
         app.component("TextArea", TextArea)
         app.component("Select", Select)
         app.component("GroupCheckbox", GroupCheckbox)
+        app.component("GroupRadio", GroupRadio)
     },
 }
