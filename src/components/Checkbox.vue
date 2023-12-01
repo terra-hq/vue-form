@@ -8,6 +8,8 @@
             :checked="modelValue"
             :value="modelValue"
             @change="$emit('update:modelValue', !modelValue)"
+            :aria-required="required"
+            :aria-invalid="error"
         />
         <Label :forId="id" :labelClass="[`${checkboxClass}__title`]" :textLabel="textLabel" />
     </div>

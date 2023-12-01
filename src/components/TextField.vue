@@ -9,6 +9,8 @@
             :maxlength="maxlength"
             :placeholder="placeholder"
             :required="required"
+            :aria-required="required"
+            :aria-invalid="error"
         />
     </div>
 </template>

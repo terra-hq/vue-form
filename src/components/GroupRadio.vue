@@ -11,6 +11,8 @@
             :required="required"
             :checked="option.id === selectedOption"
             @change="handleChange(option.id)"
+            :aria-required="required"
+            :aria-invalid="error"
         />
         <Label
             :forId="option.id"

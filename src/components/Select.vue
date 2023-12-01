@@ -6,6 +6,8 @@
             :class="[`${selectClass}__item`]"
             v-model="selectedOption"
             @input="handleSelectChange"
+            :aria-required="required"
+            :aria-invalid="error"
         >
             <option
                 v-for="option in options"

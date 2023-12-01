@@ -111,7 +111,7 @@ const optionSelected = ref("seat")
 
 const textAreaValue = ref("")
 
-const error = ref(true)
+const error = ref(false)
 const required = ref(false)
 
 const hintMessage = ref("")

@@ -7,6 +7,9 @@
             :placeholder="placeholder"
             :rows="rows"
             @input="handleChange"
+            :required="required"
+            :aria-required="required"
+            :aria-invalid="error"
         ></textarea>
     </div>
 </template>
