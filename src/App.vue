@@ -2,6 +2,8 @@
     <FormGroup formClass="g--form-group-01">
         <Label forId="firstName" labelClass="g--form-label-01" textLabel="First Name" />
 
+        <Hint :hintMessage="hintMessage" hintClass="g--form-hint-01" />
+
         <TextField
             type="text"
             v-model="firstName"
@@ -67,12 +69,7 @@
             :error="error"
         />
 
-        <ErrorAndHint
-            :errorMessage="errorMessage"
-            errorClass="g--form-error-01"
-            :hintMessage="hintMessage"
-            hintClass="g--form-hint-01"
-        />
+        <Error :errorMessage="errorMessage" errorClass="g--form-error-01" />
     </FormGroup>
 </template>
 
@@ -86,7 +83,8 @@ import Select from "./components/Select.vue"
 import TextArea from "./components/TextArea.vue"
 import GroupCheckbox from "./components/GroupCheckbox.vue"
 import GroupRadio from "./components/GroupRadio.vue"
-import ErrorAndHint from "./components/ErrorAndHint.vue"
+import Error from "./components/Error.vue"
+import Hint from "./components/Hint.vue"
 import { ref } from "vue"
 
 const firstName = ref("")
@@ -128,5 +126,5 @@ const error = ref(false)
 const required = ref(false)
 
 const hintMessage = ref("")
-const errorMessage = ref("")
+const errorMessage = ref("Debes completar todos los campos requeridos")
 </script>

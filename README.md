@@ -24,7 +24,8 @@ import GroupCheckbox from "@terra-hq/vue-form";
 import GroupRadio from "@terra-hq/vue-form";
 import Select from "@terra-hq/vue-form";
 import TextArea from "@terra-hq/vue-form";
-import ErrorAndHint from "@terra-hq/vue-form";
+import Error from "@terra-hq/vue-form";
+import Hint from "@terra-hq/vue-form";
 
 export default (app: App) => {
     app.use(FormGroup);
@@ -35,7 +36,8 @@ export default (app: App) => {
     app.use(GroupRadio);
     app.use(Select);
     app.use(TextArea);
-    app.use(ErrorAndHint);
+    app.use(Error);
+    app.use(hint);
 };
 ```
 
@@ -65,7 +67,8 @@ import GroupCheckbox from "@terra-hq/vue-form"
 import GroupRadio from "@terra-hq/vue-form"
 import Select from "@terra-hq/vue-form"
 import TextArea from "@terra-hq/vue-form"
-import ErrorAndHint from "@terra-hq/vue-form"
+import Error from "@terra-hq/vue-form"
+import Hint from "@terra-hq/vue-form"
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(FormGroup)
@@ -76,7 +79,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(GroupRadio)
     nuxtApp.vueApp.use(Select)
     nuxtApp.vueApp.use(TextArea)
-    nuxtApp.vueApp.use(ErrorAndHint)
+    nuxtApp.vueApp.use(Error)
+    nuxtApp.vueApp.use(Hint)
 })
 ```
 
@@ -88,6 +92,8 @@ Now, you can use the components in any .vue file.
 <template>
   <FormGroup formClass="g--form-group-01">
     <Label forId="firstName" labelClass="g--form-label-01" textLabel="First Name" />
+
+    <Hint :hintMessage="hintMessage" hintClass="g--form-hint-01" />
 
     <TextField
       type="text"
@@ -144,12 +150,7 @@ Now, you can use the components in any .vue file.
         :error="error"
     />
 
-    <ErrorAndHint
-      :errorMessage="errorMessage"
-      errorClass="g--form-error-01"
-      :hintMessage="hintMessage"
-      hintClass="g--form-hint-01"
-    />
+    <Error :errorMessage="errorMessage" errorClass="g--form-error-01" />
   </FormGroup>
 </template>
 
@@ -203,7 +204,7 @@ const required = ref(false)
 
 // Error and Hint
 const hintMessage = ref("")
-const errorMessage = ref("")
+const errorMessage = ref("Debes completar todos los campos requeridos")
 </script>
 
 ```
@@ -223,6 +224,13 @@ const errorMessage = ref("")
         -   **forId**: (Required) ID of the associated input element - (String).
         -   **labelClass**: (Required) CSS class for styling the label - (String).
         -   **textLabel**: Text content of the label (Optional - If not provided, label will not be displayed) - (String).
+
+-   **Hint**
+    The Hint component displays a clue message.
+
+    -   Props:
+        -   **hintClass**: (Required) CSS class for styling the hint - (String).
+        -   **hintMessage**: Text content of the hint (Optional - If not provided, hint will not be displayed) - (String).
 
 -   **TextField**
     The TextField component represents a text input.
@@ -291,16 +299,13 @@ const errorMessage = ref("")
         -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
--   **ErrorAndHint**
-    The ErrorAndHint component displays an error message and/or a hint message.
+-   **Error**
+    The Error component displays an error message.
 
     -   Props:
         -   **errorMessage**: Error message to be displayed (Optional - If not provided, error message will not be displayed) - (String).
         -   **errorClass**: (Required) CSS class for styling the error message - (String).
-        -   **hintMessage**: Hint message to be displayed (Optional - If not provided, hint message will not be displayed) - (String).
-        -   **hintClass**: (Required) CSS class for styling the hint message - (String).
 
 #### Note:
 
 -   **Messages (error, hint, label)** are conditionally displayed. If the message is an empty string "", nothing will be displayed.
--   **Error messages** take precedence over hint messages. If an error message is present, it will be displayed even if a hint message exists.
