@@ -10,11 +10,6 @@ import Select from "./components/Select.vue"
 import GroupCheckbox from "./components/GroupCheckbox.vue"
 import GroupRadio from "./components/GroupRadio.vue"
 
-import { createApp } from "vue"
-import App from "./App.vue"
-
-createApp(App).mount("#app")
-
 export default {
     install: (app, options) => {
         app.component("FormGroup", FormGroup)
