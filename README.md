@@ -16,16 +16,16 @@ For projects using Astro with embedded Vue, create a file named `\_app.ts` and i
 
 ```sh
 import type { App } from "vue";
-import FormGroup from "@terra-hq/vue-form";
-import Label from "@terra-hq/vue-form";
-import TextField from "@terra-hq/vue-form";
-import Checkbox from "@terra-hq/vue-form";
-import GroupCheckbox from "@terra-hq/vue-form";
-import GroupRadio from "@terra-hq/vue-form";
-import Select from "@terra-hq/vue-form";
-import TextArea from "@terra-hq/vue-form";
-import Error from "@terra-hq/vue-form";
-import Hint from "@terra-hq/vue-form";
+import FormGroup from "@terrahq/vue-form";
+import Label from "@terrahq/vue-form";
+import TextField from "@terrahq/vue-form";
+import Checkbox from "@terrahq/vue-form";
+import GroupCheckbox from "@terrahq/vue-form";
+import GroupRadio from "@terrahq/vue-form";
+import Select from "@terrahq/vue-form";
+import TextArea from "@terrahq/vue-form";
+import Error from "@terrahq/vue-form";
+import Hint from "@terrahq/vue-form";
 
 export default (app: App) => {
     app.use(FormGroup);
@@ -59,16 +59,16 @@ Now, you can use the components in any .vue file.
 For Nuxt projects, create a 'Plugins' folder at the root, and within it, create a file (e.g., "form.js"). Inside the file, add the following code:
 
 ```sh
-import FormGroup from "@terra-hq/vue-form"
-import Label from "@terra-hq/vue-form"
-import TextField from "@terra-hq/vue-form"
-import Checkbox from "@terra-hq/vue-form"
-import GroupCheckbox from "@terra-hq/vue-form"
-import GroupRadio from "@terra-hq/vue-form"
-import Select from "@terra-hq/vue-form"
-import TextArea from "@terra-hq/vue-form"
-import Error from "@terra-hq/vue-form"
-import Hint from "@terra-hq/vue-form"
+import FormGroup from "@terrahq/vue-form"
+import Label from "@terrahq/vue-form"
+import TextField from "@terrahq/vue-form"
+import Checkbox from "@terrahq/vue-form"
+import GroupCheckbox from "@terrahq/vue-form"
+import GroupRadio from "@terrahq/vue-form"
+import Select from "@terrahq/vue-form"
+import TextArea from "@terrahq/vue-form"
+import Error from "@terrahq/vue-form"
+import Hint from "@terrahq/vue-form"
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(FormGroup)
