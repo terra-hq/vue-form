@@ -11,7 +11,7 @@
             :aria-required="required"
             :aria-invalid="error"
         />
-        <Label :forId="id" :labelClass="[`${checkboxClass}__title`]" :textLabel="textLabel" />
+        <Label :forId="id" :labelClass="`${checkboxClass}__title`" :textLabel="textLabel" />
     </div>
 </template>
 

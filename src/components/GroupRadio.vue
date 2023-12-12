@@ -14,11 +14,7 @@
             :aria-required="required"
             :aria-invalid="error"
         />
-        <Label
-            :forId="option.id"
-            :labelClass="[`${radioClass}__title`]"
-            :textLabel="option.label"
-        />
+        <Label :forId="option.id" :labelClass="`${radioClass}__title`" :textLabel="option.label" />
     </div>
 </template>
 

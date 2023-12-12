@@ -13,6 +13,16 @@
             :maxlength="8"
         />
 
+        <UploadFile
+            v-model="selectedFile"
+            id="fileInput"
+            uploadClass="g--form-upload-01"
+            :error="error"
+            :required="required"
+            accept="image/*"
+            :multiple="true"
+        />
+
         <Checkbox
             v-model="terms"
             id="terms"
@@ -70,6 +80,7 @@
 import FormGroup from "./components/FormGroup.vue"
 import Label from "./components/Label.vue"
 import TextField from "./components/TextField.vue"
+import UploadFile from "./components/UploadFile.vue"
 import Checkbox from "./components/Checkbox.vue"
 import Select from "./components/Select.vue"
 import TextArea from "./components/TextArea.vue"
@@ -79,6 +90,8 @@ import ErrorAndHint from "./components/ErrorAndHint.vue"
 import { ref } from "vue"
 
 const firstName = ref("")
+
+const selectedFile = ref("")
 
 const terms = ref(true)
 
