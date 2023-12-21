@@ -104,6 +104,7 @@ Now, you can use the components in any .vue file.
       :error="error"
       :required="required"
       :maxlength="8"
+      :disabled="disabled"
     />
 
      <Checkbox
@@ -113,6 +114,7 @@ Now, you can use the components in any .vue file.
         textLabel="Accept Terms and conditions"
         :error="error"
         :required="required"
+        :disabled="disabled"
      />
 
      <GroupCheckbox
@@ -121,6 +123,7 @@ Now, you can use the components in any .vue file.
         checkboxClass="g--form-checkbox-01"
         :error="error"
         :required="required"
+        :disabled="disabled"
     />
 
     <GroupRadio
@@ -129,6 +132,7 @@ Now, you can use the components in any .vue file.
         radioClass="g--form-radio-01"
         :error="error"
         :required="required"
+        :disabled="disabled"
     />
 
      <Select
@@ -148,6 +152,7 @@ Now, you can use the components in any .vue file.
         placeholder="Comments"
         :required="required"
         :error="error"
+        :disabled="disabled"
     />
 
     <Error :errorMessage="errorMessage" errorClass="g--form-error-01" />
@@ -202,6 +207,9 @@ const error = ref(true)
 // Required for inputs
 const required = ref(false)
 
+// Disabled for inputs
+const disabled = ref(false)
+
 // Error and Hint
 const hintMessage = ref("")
 const errorMessage = ref("Debes completar todos los campos requeridos")
@@ -242,7 +250,8 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **inputClass**: (Required) CSS class for styling the input - (String).
         -   **maxlength**: Maximum number of characters allowed in the input (Optional) - (Number).
         -   **placeholder**: Placeholder text for the input (Optional - If not provided, placeholder will not be displayed) - (String).
-        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false) - (Boolean).
+        -   **required**: Boolean value indicating whether the input is required (Optional - Default is false) - (Boolean).
+        -   **disabled**: Boolean value indicating whether the input is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
 -   **Checkbox**
@@ -253,7 +262,8 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **id**: (Required) ID of the checkbox input - (String).
         -   **checkboxClass**: (Required) CSS class for styling the checkbox - (String).
         -   **textLabel**: Text content of the label (Optional - If not provided, label will not be displayed) - (String).
-        -   **required**: Boolean value indicating whether the select is required (Optional - Default is false) - (Boolean).
+        -   **required**: Boolean value indicating whether the checkbox is required (Optional - Default is false) - (Boolean).
+        -   **disabled**: Boolean value indicating whether the checkbox is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
 -   **Group of checkbox**
@@ -264,6 +274,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **v-model**: (Required) Two-way binding for the selected options' values - (String[ ]).
         -   **groupClass**: (Required) CSS class for styling the checkbox group - (String).
         -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false) - (Boolean).
+        -   **disabled**: Boolean value indicating whether the textarea is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added to each checkbox individually (Optional - Default is false) - (Boolean).
 
 -   **Group of radio buttons**
@@ -274,6 +285,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **v-model**: (Required) Two-way binding for the selected option's value - (String).
         -   **radioClass**: (Required) CSS class for styling the radio button group - (String).
         -   **required**: Boolean value indicating whether the radio button group is required (Optional - Default is false) - (Boolean).
+        -   **disabled**: Boolean value indicating whether the radio button group is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - Boolean.
 
 -   **Select**
@@ -297,6 +309,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **rows**: Number of rows for the textarea (Optional - Default is 3) - (Number).
         -   **placeholder**: Placeholder text for the textarea (Optional - If not provided, placeholder will not be displayed) - (String).
         -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false) - (Boolean).
+        -   **disabled**: Boolean value indicating whether the textarea is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
 -   **Error**

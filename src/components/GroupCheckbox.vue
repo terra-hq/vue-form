@@ -8,6 +8,7 @@
         :error="error"
         :required="required"
         :textLabel="option.label"
+        :disabled="disabled"
     />
 </template>
 
@@ -24,6 +25,10 @@ const props = defineProps({
         default: false,
     },
     required: {
+        type: Boolean,
+        default: false,
+    },
+    disabled: {
         type: Boolean,
         default: false,
     },

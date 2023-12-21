@@ -10,6 +10,7 @@
             @change="$emit('update:modelValue', !modelValue)"
             :aria-required="required"
             :aria-invalid="error"
+            :disabled="disabled"
         />
         <Label :forId="id" :labelClass="`${checkboxClass}__title`" :textLabel="textLabel" />
     </div>
@@ -31,6 +32,10 @@ const props = defineProps({
         default: false,
     },
     required: {
+        type: Boolean,
+        default: false,
+    },
+    disabled: {
         type: Boolean,
         default: false,
     },

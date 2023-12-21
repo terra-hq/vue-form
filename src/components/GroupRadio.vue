@@ -13,6 +13,7 @@
             @change="handleChange(option.id)"
             :aria-required="required"
             :aria-invalid="error"
+            :disabled="disabled"
         />
         <Label :forId="option.id" :labelClass="`${radioClass}__title`" :textLabel="option.label" />
     </div>
@@ -31,6 +32,10 @@ const props = defineProps({
         default: false,
     },
     required: {
+        type: Boolean,
+        default: false,
+    },
+    disabled: {
         type: Boolean,
         default: false,
     },

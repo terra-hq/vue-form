@@ -10,6 +10,7 @@
             :required="required"
             :aria-required="required"
             :aria-invalid="error"
+            :disabled="disabled"
         />
     </div>
 </template>
@@ -31,6 +32,10 @@ const props = defineProps({
         default: false,
     },
     required: {
+        type: Boolean,
+        default: false,
+    },
+    disabled: {
         type: Boolean,
         default: false,
     },

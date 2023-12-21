@@ -10,6 +10,7 @@
             :required="required"
             :aria-required="required"
             :aria-invalid="error"
+            :disabled="disabled"
         ></textarea>
     </div>
 </template>
@@ -30,6 +31,10 @@ const props = defineProps({
         default: null,
     },
     required: {
+        type: Boolean,
+        default: false,
+    },
+    disabled: {
         type: Boolean,
         default: false,
     },
