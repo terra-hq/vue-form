@@ -155,6 +155,17 @@ Now, you can use the components in any .vue file.
         :disabled="disabled"
     />
 
+    <TUploadFile
+        :id="id"
+        uploadClass="g--form-upload-01"
+        :modelValue="uploadFile"
+        :multiple="multipleFiles"
+        :error="error"
+        :required="required"
+        :disabled="disabled"
+        accept="image/png, image/jpeg"
+    />
+
     <TError :errorMessage="errorMessage" errorClass="g--form-error-01" />
   </TFormGroup>
 </template>
@@ -201,6 +212,9 @@ const optionSelected = ref("one")
 // TTextArea
 const textAreaValue = ref("")
 
+// TUploadFile
+const multipleFiles = ref(false)
+
 // Error for inputs
 const error = ref(true)
 
@@ -220,13 +234,13 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
 ## Components
 
 -   **TFormGroup**
-    The FormGroup component is used to wrap other form components. It allows you to apply a common styling to the entire form group.
+    The TFormGroup component is used to wrap other form components. It allows you to apply a common styling to the entire form group.
 
     -   Props:
         -   **formClass**: (Required) CSS class for styling the form group - [String].
 
 -   **TLabel**
-    The Label component represents the label for an input element.
+    The TLabel component represents the label for an input element.
 
     -   Props:
         -   **forId**: (Required) ID of the associated input element - (String).
@@ -234,14 +248,14 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **textLabel**: Text content of the label (Optional - If not provided, label will not be displayed) - (String).
 
 -   **THint**
-    The Hint component displays a clue message.
+    The THint component displays a clue message.
 
     -   Props:
         -   **hintClass**: (Required) CSS class for styling the hint - (String).
         -   **hintMessage**: Text content of the hint (Optional - If not provided, hint will not be displayed) - (String).
 
 -   **TInputField**
-    The InputField component represents a text input.
+    The TInputField component represents a text input.
 
     -   Props:
         -   **type**: Input type (Optional - Default is "text") - (String).
@@ -255,7 +269,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
 -   **TCheckbox**
-    The Checkbox component represents a checkbox input.
+    The TCheckbox component represents a checkbox input.
 
     -   Props:
         -   **v-model**: (Required) Two-way binding for the checkbox value - (Boolean).
@@ -266,8 +280,8 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **disabled**: Boolean value indicating whether the checkbox is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
--   **TGroup of checkbox**
-    The GroupCheckbox component allows users to select multiple options from a list.
+-   **Group of checkbox**
+    The TGroupCheckbox component allows users to select multiple options from a list.
 
     -   Props:
         -   **options**: (Required) An array of objects representing the options in the checkbox group. Each object should have the properties id (value of the option) and label (display label of the option) - ({id: String, label: String}[ ]).
@@ -277,8 +291,8 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **disabled**: Boolean value indicating whether the textarea is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added to each checkbox individually (Optional - Default is false) - (Boolean).
 
--   **TGroup of radio buttons**
-    The GroupRadio component allows users to select a single option from a list of radio buttons.
+-   **Group of radio buttons**
+    The TGroupRadio component allows users to select a single option from a list of radio buttons.
 
     -   Props:
         -   **options**: (Required) An array of objects representing the options in the radio button group. Each object should have the properties `id` (value of the option) and `label` (display label of the option) - [{id: String, label: String}[]].
@@ -289,7 +303,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - Boolean.
 
 -   **TSelect**
-    The Select component represents a dropdown selection.
+    The TSelect component represents a dropdown selection.
 
     -   Props:
         -   **id**: (Required) ID of the select element - (String).
@@ -300,7 +314,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
 -   **TTextArea**
-    The TextArea component represents a multiline text input.
+    The TTextArea component represents a multiline text input.
 
     -   Props:
         -   **id**: (Required) ID of the textarea element - (String).
@@ -312,8 +326,21 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **disabled**: Boolean value indicating whether the textarea is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
+-   **TUploadFile**
+    The TUploadFile component allows users to upload files.
+
+    -   Props:
+        -   **id**: (Required) ID of the file input element - (String).
+        -   **textAreaClass**: (Required) CSS class for styling the file upload - (String).
+        -   **v-model**: (Required) Two-way binding for the uploaded file's value - ([File, String]).
+        -   **multiple**: Boolean value indicating whether multiple file selection is allowed (Optional - Default is false) - (Boolean).
+        -   **accept**: File types that can be selected. Specified using MIME types, separated by commas (Optional - Default is an empty string) - (String).
+        -   **required**: Boolean value indicating whether the file upload is required (Optional - Default is false) - (Boolean).
+        -   **disabled**: Boolean value indicating whether the file upload is disabled (Optional - Default is false) - (Boolean).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
+
 -   **TError**
-    The Error component displays an error message.
+    The TError component displays an error message.
 
     -   Props:
         -   **errorMessage**: Error message to be displayed (Optional - If not provided, error message will not be displayed) - (String).
