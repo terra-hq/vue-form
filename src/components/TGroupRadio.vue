@@ -15,13 +15,13 @@
             :aria-invalid="error"
             :disabled="disabled"
         />
-        <Label :forId="option.id" :labelClass="`${radioClass}__title`" :textLabel="option.label" />
+        <TLabel :forId="option.id" :labelClass="`${radioClass}__title`" :textLabel="option.label" />
     </div>
 </template>
 
 <script setup>
 import { ref } from "vue"
-import Label from "./Label.vue"
+import TLabel from "./TLabel.vue"
 
 const props = defineProps({
     options: Array, // { id: string; label: string }[]

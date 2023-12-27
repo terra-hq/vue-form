@@ -16,28 +16,28 @@ For projects using Astro with embedded Vue, create a file named `\_app.ts` and i
 
 ```sh
 import type { App } from "vue";
-import FormGroup from "@terrahq/vue-form";
-import Label from "@terrahq/vue-form";
-import TextField from "@terrahq/vue-form";
-import Checkbox from "@terrahq/vue-form";
-import GroupCheckbox from "@terrahq/vue-form";
-import GroupRadio from "@terrahq/vue-form";
-import Select from "@terrahq/vue-form";
-import TextArea from "@terrahq/vue-form";
-import Error from "@terrahq/vue-form";
-import Hint from "@terrahq/vue-form";
+import TFormGroup from "@terrahq/vue-form";
+import TLabel from "@terrahq/vue-form";
+import TInputField from "@terrahq/vue-form";
+import TCheckbox from "@terrahq/vue-form";
+import TGroupCheckbox from "@terrahq/vue-form";
+import TGroupRadio from "@terrahq/vue-form";
+import TSelect from "@terrahq/vue-form";
+import TTextArea from "@terrahq/vue-form";
+import TError from "@terrahq/vue-form";
+import THint from "@terrahq/vue-form";
 
 export default (app: App) => {
-    app.use(FormGroup);
-    app.use(Label);
-    app.use(TextField);
-    app.use(Checkbox);
-    app.use(GroupCheckbox);
-    app.use(GroupRadio);
-    app.use(Select);
-    app.use(TextArea);
-    app.use(Error);
-    app.use(hint);
+    app.use(TFormGroup);
+    app.use(TLabel);
+    app.use(TInputField);
+    app.use(TCheckbox);
+    app.use(TGroupCheckbox);
+    app.use(TGroupRadio);
+    app.use(TSelect);
+    app.use(TTextArea);
+    app.use(TError);
+    app.use(THint);
 };
 ```
 
@@ -59,28 +59,28 @@ Now, you can use the components in any .vue file.
 For Nuxt projects, create a 'Plugins' folder at the root, and within it, create a file (e.g., "form.js"). Inside the file, add the following code:
 
 ```sh
-import FormGroup from "@terrahq/vue-form"
-import Label from "@terrahq/vue-form"
-import TextField from "@terrahq/vue-form"
-import Checkbox from "@terrahq/vue-form"
-import GroupCheckbox from "@terrahq/vue-form"
-import GroupRadio from "@terrahq/vue-form"
-import Select from "@terrahq/vue-form"
-import TextArea from "@terrahq/vue-form"
-import Error from "@terrahq/vue-form"
-import Hint from "@terrahq/vue-form"
+import TFormGroup from "@terrahq/vue-form"
+import TLabel from "@terrahq/vue-form"
+import TInputField from "@terrahq/vue-form"
+import TCheckbox from "@terrahq/vue-form"
+import TGroupCheckbox from "@terrahq/vue-form"
+import TGroupRadio from "@terrahq/vue-form"
+import TSelect from "@terrahq/vue-form"
+import TTextArea from "@terrahq/vue-form"
+import TError from "@terrahq/vue-form"
+import THint from "@terrahq/vue-form"
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(FormGroup)
-    nuxtApp.vueApp.use(Label)
-    nuxtApp.vueApp.use(TextField)
-    nuxtApp.vueApp.use(Checkbox)
-    nuxtApp.vueApp.use(GroupCheckbox)
-    nuxtApp.vueApp.use(GroupRadio)
-    nuxtApp.vueApp.use(Select)
-    nuxtApp.vueApp.use(TextArea)
-    nuxtApp.vueApp.use(Error)
-    nuxtApp.vueApp.use(Hint)
+    nuxtApp.vueApp.use(TFormGroup)
+    nuxtApp.vueApp.use(TLabel)
+    nuxtApp.vueApp.use(TInputField)
+    nuxtApp.vueApp.use(TCheckbox)
+    nuxtApp.vueApp.use(TGroupCheckbox)
+    nuxtApp.vueApp.use(TGroupRadio)
+    nuxtApp.vueApp.use(TSelect)
+    nuxtApp.vueApp.use(TTextArea)
+    nuxtApp.vueApp.use(TError)
+    nuxtApp.vueApp.use(THint)
 })
 ```
 
@@ -90,12 +90,12 @@ Now, you can use the components in any .vue file.
 
 ```sh
 <template>
-  <FormGroup formClass="g--form-group-01">
-    <Label forId="firstName" labelClass="g--form-label-01" textLabel="First Name" />
+  <TFormGroup formClass="g--form-group-01">
+    <TLabel forId="firstName" labelClass="g--form-label-01" textLabel="First Name" />
 
-    <Hint :hintMessage="hintMessage" hintClass="g--form-hint-01" />
+    <THint :hintMessage="hintMessage" hintClass="g--form-hint-01" />
 
-    <TextField
+    <TInputField
       type="text"
       v-model="firstName"
       id="firstName"
@@ -107,7 +107,7 @@ Now, you can use the components in any .vue file.
       :disabled="disabled"
     />
 
-     <Checkbox
+     <TCheckbox
         v-model="terms"
         id="terms"
         checkboxClass="g--form-checkbox-01"
@@ -117,7 +117,7 @@ Now, you can use the components in any .vue file.
         :disabled="disabled"
      />
 
-     <GroupCheckbox
+     <TGroupCheckbox
         :options="checkboxOptions"
         v-model="optionsChecked"
         checkboxClass="g--form-checkbox-01"
@@ -135,7 +135,7 @@ Now, you can use the components in any .vue file.
         :disabled="disabled"
     />
 
-     <Select
+     <TSelect
         id="cars"
         selectClass="g--form-select-01"
         :options="selectOptions"
@@ -144,7 +144,7 @@ Now, you can use the components in any .vue file.
         :error="error"
     />
 
-    <TextArea
+    <TTextArea
         v-model="textAreaValue"
         id="comments"
         textAreaClass="g--form-textarea-01"
@@ -155,20 +155,20 @@ Now, you can use the components in any .vue file.
         :disabled="disabled"
     />
 
-    <Error :errorMessage="errorMessage" errorClass="g--form-error-01" />
-  </FormGroup>
+    <TError :errorMessage="errorMessage" errorClass="g--form-error-01" />
+  </TFormGroup>
 </template>
 
 <script setup>
 import { ref } from "vue"
 
-// TextField
+// TInputField
 const firstName = ref("")
 
-// Checkbox
+// TCheckbox
 const terms = ref(true)
 
-// Group of checkboxes
+// TGroup of checkboxes
 const checkboxOptions = ref([
     { id: "one", label: "One" },
     { id: "two", label: "Two" },
@@ -178,7 +178,7 @@ const checkboxOptions = ref([
 ])
 const optionsChecked = ref(["three", "four"])
 
-// Group of radio
+// TGroup of radio
 const radioOptions = ref([
     { id: "six", label: "Six" },
     { id: "seven", label: "Seven" },
@@ -188,7 +188,7 @@ const radioOptions = ref([
 ])
 const radioSelected = ref("")
 
-// Select
+// TSelect
 const selectOptions = ref([
     { id: "one", label: "One", disabled: false },
     { id: "two", label: "Two", disabled: true },
@@ -198,7 +198,7 @@ const selectOptions = ref([
 ])
 const optionSelected = ref("one")
 
-// TextArea
+// TTextArea
 const textAreaValue = ref("")
 
 // Error for inputs
@@ -219,13 +219,13 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
 
 ## Components
 
--   **FormGroup**
+-   **TFormGroup**
     The FormGroup component is used to wrap other form components. It allows you to apply a common styling to the entire form group.
 
     -   Props:
         -   **formClass**: (Required) CSS class for styling the form group - [String].
 
--   **Label**
+-   **TLabel**
     The Label component represents the label for an input element.
 
     -   Props:
@@ -233,15 +233,15 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **labelClass**: (Required) CSS class for styling the label - (String).
         -   **textLabel**: Text content of the label (Optional - If not provided, label will not be displayed) - (String).
 
--   **Hint**
+-   **THint**
     The Hint component displays a clue message.
 
     -   Props:
         -   **hintClass**: (Required) CSS class for styling the hint - (String).
         -   **hintMessage**: Text content of the hint (Optional - If not provided, hint will not be displayed) - (String).
 
--   **TextField**
-    The TextField component represents a text input.
+-   **TInputField**
+    The InputField component represents a text input.
 
     -   Props:
         -   **type**: Input type (Optional - Default is "text") - (String).
@@ -254,7 +254,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **disabled**: Boolean value indicating whether the input is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
--   **Checkbox**
+-   **TCheckbox**
     The Checkbox component represents a checkbox input.
 
     -   Props:
@@ -266,7 +266,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **disabled**: Boolean value indicating whether the checkbox is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
--   **Group of checkbox**
+-   **TGroup of checkbox**
     The GroupCheckbox component allows users to select multiple options from a list.
 
     -   Props:
@@ -277,7 +277,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **disabled**: Boolean value indicating whether the textarea is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added to each checkbox individually (Optional - Default is false) - (Boolean).
 
--   **Group of radio buttons**
+-   **TGroup of radio buttons**
     The GroupRadio component allows users to select a single option from a list of radio buttons.
 
     -   Props:
@@ -288,7 +288,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **disabled**: Boolean value indicating whether the radio button group is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - Boolean.
 
--   **Select**
+-   **TSelect**
     The Select component represents a dropdown selection.
 
     -   Props:
@@ -299,7 +299,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **required**: Boolean value indicating whether the select is required (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
--   **TextArea**
+-   **TTextArea**
     The TextArea component represents a multiline text input.
 
     -   Props:
@@ -312,7 +312,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **disabled**: Boolean value indicating whether the textarea is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
--   **Error**
+-   **TError**
     The Error component displays an error message.
 
     -   Props:

@@ -14,7 +14,7 @@
 
 <script setup>
 import { reactive, ref, watch } from "vue"
-import Checkbox from "./Checkbox.vue"
+import Checkbox from "./TCheckbox.vue"
 
 const props = defineProps({
     options: Array, // { id: string; label: string }[]

@@ -12,12 +12,12 @@
             :aria-invalid="error"
             :disabled="disabled"
         />
-        <Label :forId="id" :labelClass="`${checkboxClass}__title`" :textLabel="textLabel" />
+        <TLabel :forId="id" :labelClass="`${checkboxClass}__title`" :textLabel="textLabel" />
     </div>
 </template>
 
 <script setup>
-import Label from "./Label.vue"
+import TLabel from "./TLabel.vue"
 
 const props = defineProps({
     id: String,

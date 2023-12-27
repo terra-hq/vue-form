@@ -1,27 +1,27 @@
-import FormGroup from "./components/FormGroup.vue"
-import Label from "./components/Label.vue"
-import TextField from "./components/TextField.vue"
-import UploadFile from "./components/UploadFile.vue"
-import Checkbox from "./components/Checkbox.vue"
-import Error from "./components/Error.vue"
-import Hint from "./components/Hint.vue"
-import TextArea from "./components/TextArea.vue"
-import Select from "./components/Select.vue"
-import GroupCheckbox from "./components/GroupCheckbox.vue"
-import GroupRadio from "./components/GroupRadio.vue"
+import TFormGroup from "./components/TFormGroup.vue"
+import TLabel from "./components/TLabel.vue"
+import TInputField from "./components/TInputField.vue"
+import TUploadFile from "./components/TUploadFile.vue"
+import TCheckbox from "./components/TCheckbox.vue"
+import TError from "./components/TError.vue"
+import THint from "./components/THint.vue"
+import TTextArea from "./components/TTextArea.vue"
+import TSelect from "./components/TSelect.vue"
+import TGroupCheckbox from "./components/TGroupCheckbox.vue"
+import TGroupRadio from "./components/TGroupRadio.vue"
 
 export default {
     install: (app, options) => {
-        app.component("FormGroup", FormGroup)
-        app.component("Label", Label)
-        app.component("TextField", TextField)
-        app.component("UploadFile", UploadFile)
-        app.component("Checkbox", Checkbox)
-        app.component("Error", Error)
-        app.component("Hint", Hint)
-        app.component("TextArea", TextArea)
-        app.component("Select", Select)
-        app.component("GroupCheckbox", GroupCheckbox)
-        app.component("GroupRadio", GroupRadio)
+        app.component("TFormGroup", TFormGroup)
+        app.component("TLabel", TLabel)
+        app.component("TInputField", TInputField)
+        app.component("TUploadFile", TUploadFile)
+        app.component("TCheckbox", TCheckbox)
+        app.component("TError", TError)
+        app.component("THint", THint)
+        app.component("TTextArea", TTextArea)
+        app.component("TSelect", TSelect)
+        app.component("TGroupCheckbox", TGroupCheckbox)
+        app.component("TGroupRadio", TGroupRadio)
     },
 }

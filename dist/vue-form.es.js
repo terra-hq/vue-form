@@ -1,6 +1,6 @@
-import { openBlock as u, createElementBlock as s, normalizeClass as n, renderSlot as $, toDisplayString as h, createCommentVNode as g, ref as f, watch as v, createElementVNode as m, createVNode as q, withDirectives as V, vModelText as k, Fragment as C, renderList as y, vModelSelect as B, reactive as L, createBlock as A } from "vue";
-const F = {
-  __name: "FormGroup",
+import { openBlock as u, createElementBlock as s, normalizeClass as n, renderSlot as $, toDisplayString as h, createCommentVNode as g, ref as f, watch as x, createElementVNode as m, createVNode as q, withDirectives as V, vModelText as k, Fragment as C, renderList as y, vModelSelect as B, reactive as T, createBlock as L } from "vue";
+const I = {
+  __name: "TFormGroup",
   props: {
     formClass: String
   },
@@ -11,8 +11,8 @@ const F = {
       $(a.$slots, "default")
     ], 2));
   }
-}, M = ["for"], x = {
-  __name: "Label",
+}, A = ["for"], v = {
+  __name: "TLabel",
   props: {
     textLabel: {
       type: String,
@@ -26,10 +26,10 @@ const F = {
       key: 0,
       for: e.forId,
       class: n(e.labelClass)
-    }, h(e.textLabel), 11, M)) : g("", !0);
+    }, h(e.textLabel), 11, A)) : g("", !0);
   }
-}, I = ["type", "value", "id", "maxlength", "placeholder", "required", "aria-required", "aria-invalid", "disabled"], w = {
-  __name: "TextField",
+}, M = ["type", "value", "id", "maxlength", "placeholder", "required", "aria-required", "aria-invalid", "disabled"], F = {
+  __name: "TInputField",
   props: {
     type: {
       type: String,
@@ -63,7 +63,7 @@ const F = {
     const i = e, l = f(i.modelValue), o = a, t = (d) => {
       l.value = d.target.value, o("update:modelValue", l.value);
     };
-    return v(
+    return x(
       () => i.modelValue,
       (d) => {
         l.value = d;
@@ -83,16 +83,16 @@ const F = {
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, I)
+      }, null, 42, M)
     ], 2));
   }
-}, G = ["id", "accept", "multiple", "required", "aria-required", "aria-invalid", "disabled"], U = {
-  __name: "UploadFile",
+}, w = ["id", "accept", "multiple", "required", "aria-required", "aria-invalid", "disabled"], G = {
+  __name: "TUploadFile",
   props: {
     id: String,
     uploadClass: String,
     modelValue: {
-      type: [File, FileList, String],
+      type: [File, String],
       default: String
     },
     multiple: {
@@ -135,11 +135,11 @@ const F = {
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, G)
+      }, null, 42, w)
     ], 2));
   }
-}, T = ["id", "required", "checked", "value", "aria-required", "aria-invalid", "disabled"], S = {
-  __name: "Checkbox",
+}, U = ["id", "required", "checked", "value", "aria-required", "aria-invalid", "disabled"], S = {
+  __name: "TCheckbox",
   props: {
     id: String,
     checkboxClass: String,
@@ -177,8 +177,8 @@ const F = {
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, T),
-      q(x, {
+      }, null, 42, U),
+      q(v, {
         forId: e.id,
         labelClass: `${e.checkboxClass}__title`,
         textLabel: e.textLabel
@@ -186,7 +186,7 @@ const F = {
     ], 2));
   }
 }, E = {
-  __name: "Error",
+  __name: "TError",
   props: {
     errorMessage: {
       type: String,
@@ -201,7 +201,7 @@ const F = {
     }, h(e.errorMessage), 3)) : g("", !0);
   }
 }, N = {
-  __name: "Hint",
+  __name: "THint",
   props: {
     hintMessage: {
       type: String,
@@ -216,7 +216,7 @@ const F = {
     }, h(e.hintMessage), 3)) : g("", !0);
   }
 }, D = ["id", "placeholder", "rows", "required", "aria-required", "aria-invalid", "disabled"], H = {
-  __name: "TextArea",
+  __name: "TTextArea",
   props: {
     modelValue: String,
     id: String,
@@ -266,7 +266,7 @@ const F = {
     ], 2));
   }
 }, O = ["id", "required", "aria-required", "aria-invalid"], R = ["value", "disabled", "selected"], z = {
-  __name: "Select",
+  __name: "TSelect",
   props: {
     id: String,
     selectClass: String,
@@ -310,7 +310,7 @@ const F = {
     ], 2));
   }
 }, j = {
-  __name: "GroupCheckbox",
+  __name: "TGroupCheckbox",
   props: {
     options: Array,
     // { id: string; label: string }[]
@@ -332,7 +332,7 @@ const F = {
   },
   emits: ["update:modelValue"],
   setup(e, { emit: a }) {
-    const i = e, l = L(
+    const i = e, l = T(
       i.options.map((t) => {
         var d;
         return {
@@ -341,12 +341,12 @@ const F = {
         };
       })
     ), o = a;
-    return v(l, () => {
+    return x(l, () => {
       o(
         "update:modelValue",
         l.filter((t) => t.checked).map((t) => t.id)
       );
-    }), (t, d) => (u(!0), s(C, null, y(e.options, (c, r) => (u(), A(S, {
+    }), (t, d) => (u(!0), s(C, null, y(e.options, (c, r) => (u(), L(S, {
       key: r,
       modelValue: l[r].checked,
       "onUpdate:modelValue": (b) => l[r].checked = b,
@@ -359,7 +359,7 @@ const F = {
     }, null, 8, ["modelValue", "onUpdate:modelValue", "id", "checkboxClass", "error", "required", "textLabel", "disabled"]))), 128));
   }
 }, J = ["id", "required", "checked", "onChange", "aria-required", "aria-invalid", "disabled"], K = {
-  __name: "GroupRadio",
+  __name: "TGroupRadio",
   props: {
     options: Array,
     // { id: string; label: string }[]
@@ -397,7 +397,7 @@ const F = {
         "aria-invalid": e.error,
         disabled: e.disabled
       }, null, 42, J),
-      q(x, {
+      q(v, {
         forId: r.id,
         labelClass: `${e.radioClass}__title`,
         textLabel: r.label
@@ -406,7 +406,7 @@ const F = {
   }
 }, W = {
   install: (e, a) => {
-    e.component("FormGroup", F), e.component("Label", x), e.component("TextField", w), e.component("UploadFile", U), e.component("Checkbox", S), e.component("Error", E), e.component("Hint", N), e.component("TextArea", H), e.component("Select", z), e.component("GroupCheckbox", j), e.component("GroupRadio", K);
+    e.component("TFormGroup", I), e.component("TLabel", v), e.component("TInputField", F), e.component("TUploadFile", G), e.component("TCheckbox", S), e.component("TError", E), e.component("THint", N), e.component("TTextArea", H), e.component("TSelect", z), e.component("TGroupCheckbox", j), e.component("TGroupRadio", K);
   }
 };
 export {

@@ -20,7 +20,7 @@ const props = defineProps({
     id: String,
     uploadClass: String,
     modelValue: {
-        type: [File, FileList, String],
+        type: [File, String],
         default: String,
     },
     multiple: {
