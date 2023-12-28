@@ -62,6 +62,7 @@ For Nuxt projects, create a 'Plugins' folder at the root, and within it, create 
 import TFormGroup from "@terrahq/vue-form"
 import TLabel from "@terrahq/vue-form"
 import TInputField from "@terrahq/vue-form"
+import TUploadFile from "@terrahq/vue-form"
 import TCheckbox from "@terrahq/vue-form"
 import TGroupCheckbox from "@terrahq/vue-form"
 import TGroupRadio from "@terrahq/vue-form"
@@ -74,6 +75,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(TFormGroup)
     nuxtApp.vueApp.use(TLabel)
     nuxtApp.vueApp.use(TInputField)
+    nuxtApp.vueApp.use(TUploadFile)
     nuxtApp.vueApp.use(TCheckbox)
     nuxtApp.vueApp.use(TGroupCheckbox)
     nuxtApp.vueApp.use(TGroupRadio)

@@ -92,7 +92,7 @@ const I = {
     id: String,
     uploadClass: String,
     modelValue: {
-      type: [File, String],
+      type: [String],
       default: String
     },
     multiple: {
