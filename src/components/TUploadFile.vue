@@ -56,11 +56,4 @@ const handleFileChange = (event) => {
 
     emit("update:modelValue", fileValue)
 }
-
-watch(
-    () => props.modelValue,
-    (newValue, oldValue) => {
-        console.log("Nuevo valor de modelValue:", newValue)
-    }
-)
 </script>

@@ -72,17 +72,19 @@ import TError from "@terrahq/vue-form"
 import THint from "@terrahq/vue-form"
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(TFormGroup)
-    nuxtApp.vueApp.use(TLabel)
-    nuxtApp.vueApp.use(TInputField)
-    nuxtApp.vueApp.use(TUploadFile)
-    nuxtApp.vueApp.use(TCheckbox)
-    nuxtApp.vueApp.use(TGroupCheckbox)
-    nuxtApp.vueApp.use(TGroupRadio)
-    nuxtApp.vueApp.use(TSelect)
-    nuxtApp.vueApp.use(TTextArea)
-    nuxtApp.vueApp.use(TError)
-    nuxtApp.vueApp.use(THint)
+    nuxtApp.vueApp.use(
+        TFormGroup,
+        TLabel,
+        TInputField,
+        TUploadFile,
+        TCheckbox,
+        TGroupCheckbox,
+        TGroupRadio,
+        TSelect,
+        TTextArea,
+        TError,
+        THint
+    )
 })
 ```
 
