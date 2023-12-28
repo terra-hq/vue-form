@@ -5,7 +5,7 @@
             :id="id"
             :class="[`${uploadClass}__item`]"
             :accept="accept"
-            @change="handleFileChange"
+            @input="handleFileChange"
             :multiple="multiple"
             :required="required"
             :aria-required="required"
@@ -16,11 +16,12 @@
 </template>
 
 <script setup>
+import { watch } from "vue"
 const props = defineProps({
     id: String,
     uploadClass: String,
     modelValue: {
-        type: [String],
+        type: FileList,
         default: String,
     },
     multiple: {
@@ -55,4 +56,11 @@ const handleFileChange = (event) => {
 
     emit("update:modelValue", fileValue)
 }
+
+watch(
+    () => props.modelValue,
+    (newValue, oldValue) => {
+        console.log("Nuevo valor de modelValue:", newValue)
+    }
+)
 </script>

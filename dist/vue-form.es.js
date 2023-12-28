@@ -1,17 +1,17 @@
-import { openBlock as u, createElementBlock as s, normalizeClass as n, renderSlot as $, toDisplayString as h, createCommentVNode as g, ref as f, watch as x, createElementVNode as m, createVNode as q, withDirectives as V, vModelText as k, Fragment as C, renderList as y, vModelSelect as B, reactive as T, createBlock as L } from "vue";
+import { openBlock as u, createElementBlock as s, normalizeClass as n, renderSlot as $, toDisplayString as h, createCommentVNode as g, ref as f, watch as C, createElementVNode as m, createVNode as q, withDirectives as V, vModelText as k, Fragment as v, renderList as y, vModelSelect as B, reactive as T, createBlock as L } from "vue";
 const I = {
   __name: "TFormGroup",
   props: {
     formClass: String
   },
   setup(e) {
-    return (a, i) => (u(), s("div", {
+    return (d, i) => (u(), s("div", {
       class: n([e.formClass])
     }, [
-      $(a.$slots, "default")
+      $(d.$slots, "default")
     ], 2));
   }
-}, A = ["for"], v = {
+}, A = ["for"], x = {
   __name: "TLabel",
   props: {
     textLabel: {
@@ -22,7 +22,7 @@ const I = {
     labelClass: String
   },
   setup(e) {
-    return (a, i) => e.textLabel ? (u(), s("label", {
+    return (d, i) => e.textLabel ? (u(), s("label", {
       key: 0,
       for: e.forId,
       class: n(e.labelClass)
@@ -59,16 +59,16 @@ const I = {
       default: !1
     }
   },
-  setup(e, { emit: a }) {
-    const i = e, l = f(i.modelValue), o = a, t = (d) => {
-      l.value = d.target.value, o("update:modelValue", l.value);
+  setup(e, { emit: d }) {
+    const i = e, l = f(i.modelValue), o = d, t = (a) => {
+      l.value = a.target.value, o("update:modelValue", l.value);
     };
-    return x(
+    return C(
       () => i.modelValue,
-      (d) => {
-        l.value = d;
+      (a) => {
+        l.value = a;
       }
-    ), (d, c) => (u(), s("div", {
+    ), (a, c) => (u(), s("div", {
       class: n([e.inputClass, { [`${e.inputClass}--error`]: e.error }])
     }, [
       m("input", {
@@ -92,7 +92,7 @@ const I = {
     id: String,
     uploadClass: String,
     modelValue: {
-      type: [String],
+      type: FileList,
       default: String
     },
     multiple: {
@@ -116,12 +116,17 @@ const I = {
       default: ""
     }
   },
-  setup(e, { emit: a }) {
-    const i = a, l = (o) => {
-      const t = o.target.files, c = o.target.multiple ? t : t[0];
-      i("update:modelValue", c);
+  setup(e, { emit: d }) {
+    const i = e, l = d, o = (t) => {
+      const a = t.target.files, r = t.target.multiple ? a : a[0];
+      l("update:modelValue", r);
     };
-    return (o, t) => (u(), s("div", {
+    return C(
+      () => i.modelValue,
+      (t, a) => {
+        console.log("Nuevo valor de modelValue:", t);
+      }
+    ), (t, a) => (u(), s("div", {
       class: n([e.uploadClass, { [`${e.uploadClass}--error`]: e.error }])
     }, [
       m("input", {
@@ -129,7 +134,7 @@ const I = {
         id: e.id,
         class: n([`${e.uploadClass}__item`]),
         accept: e.accept,
-        onChange: l,
+        onInput: o,
         multiple: e.multiple,
         required: e.required,
         "aria-required": e.required,
@@ -163,7 +168,7 @@ const I = {
   },
   emits: ["update:modelValue"],
   setup(e) {
-    return (a, i) => (u(), s("div", {
+    return (d, i) => (u(), s("div", {
       class: n([e.checkboxClass, { [`${e.checkboxClass}--error`]: e.error }])
     }, [
       m("input", {
@@ -173,19 +178,19 @@ const I = {
         required: e.required,
         checked: e.modelValue,
         value: e.modelValue,
-        onChange: i[0] || (i[0] = (l) => a.$emit("update:modelValue", !e.modelValue)),
+        onChange: i[0] || (i[0] = (l) => d.$emit("update:modelValue", !e.modelValue)),
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
       }, null, 42, U),
-      q(v, {
+      q(x, {
         forId: e.id,
         labelClass: `${e.checkboxClass}__title`,
         textLabel: e.textLabel
       }, null, 8, ["forId", "labelClass", "textLabel"])
     ], 2));
   }
-}, E = {
+}, N = {
   __name: "TError",
   props: {
     errorMessage: {
@@ -195,12 +200,12 @@ const I = {
     errorClass: String
   },
   setup(e) {
-    return (a, i) => e.errorMessage ? (u(), s("p", {
+    return (d, i) => e.errorMessage ? (u(), s("p", {
       key: 0,
       class: n(e.errorClass)
     }, h(e.errorMessage), 3)) : g("", !0);
   }
-}, N = {
+}, E = {
   __name: "THint",
   props: {
     hintMessage: {
@@ -210,7 +215,7 @@ const I = {
     hintClass: String
   },
   setup(e) {
-    return (a, i) => e.hintMessage ? (u(), s("p", {
+    return (d, i) => e.hintMessage ? (u(), s("p", {
       key: 0,
       class: n(e.hintClass)
     }, h(e.hintMessage), 3)) : g("", !0);
@@ -242,11 +247,11 @@ const I = {
       default: !1
     }
   },
-  setup(e, { emit: a }) {
-    const l = f(e.modelValue), o = a, t = (d) => {
-      l.value = d.target.value, o("update:modelValue", l.value);
+  setup(e, { emit: d }) {
+    const l = f(e.modelValue), o = d, t = (a) => {
+      l.value = a.target.value, o("update:modelValue", l.value);
     };
-    return (d, c) => (u(), s("div", {
+    return (a, c) => (u(), s("div", {
       class: n([e.textAreaClass, { [`${e.textAreaClass}--error`]: e.error }])
     }, [
       V(m("textarea", {
@@ -282,11 +287,11 @@ const I = {
     }
   },
   emits: ["update:modelValue"],
-  setup(e, { emit: a }) {
-    const l = f(e.modelValue), o = a, t = (d) => {
-      l.value = d.target.value, o("update:modelValue", l.value);
+  setup(e, { emit: d }) {
+    const l = f(e.modelValue), o = d, t = (a) => {
+      l.value = a.target.value, o("update:modelValue", l.value);
     };
-    return (d, c) => (u(), s("div", {
+    return (a, c) => (u(), s("div", {
       class: n([e.selectClass, { [`${e.selectClass}--error`]: e.error }])
     }, [
       V(m("select", {
@@ -298,7 +303,7 @@ const I = {
         "aria-required": e.required,
         "aria-invalid": e.error
       }, [
-        (u(!0), s(C, null, y(e.options, (r) => (u(), s("option", {
+        (u(!0), s(v, null, y(e.options, (r) => (u(), s("option", {
           key: r.id,
           value: r.id,
           disabled: r.disabled,
@@ -331,22 +336,22 @@ const I = {
     }
   },
   emits: ["update:modelValue"],
-  setup(e, { emit: a }) {
+  setup(e, { emit: d }) {
     const i = e, l = T(
       i.options.map((t) => {
-        var d;
+        var a;
         return {
           ...t,
-          checked: f((d = i.modelValue) == null ? void 0 : d.includes(t.id)) || !1
+          checked: f((a = i.modelValue) == null ? void 0 : a.includes(t.id)) || !1
         };
       })
-    ), o = a;
-    return x(l, () => {
+    ), o = d;
+    return C(l, () => {
       o(
         "update:modelValue",
         l.filter((t) => t.checked).map((t) => t.id)
       );
-    }), (t, d) => (u(!0), s(C, null, y(e.options, (c, r) => (u(), L(S, {
+    }), (t, a) => (u(!0), s(v, null, y(e.options, (c, r) => (u(), L(S, {
       key: r,
       modelValue: l[r].checked,
       "onUpdate:modelValue": (b) => l[r].checked = b,
@@ -378,11 +383,11 @@ const I = {
       default: !1
     }
   },
-  setup(e, { emit: a }) {
-    const l = f(e.modelValue), o = a, t = (d) => {
-      l.value = d, o("update:modelValue", l.value);
+  setup(e, { emit: d }) {
+    const l = f(e.modelValue), o = d, t = (a) => {
+      l.value = a, o("update:modelValue", l.value);
     };
-    return (d, c) => (u(!0), s(C, null, y(e.options, (r, b) => (u(), s("div", {
+    return (a, c) => (u(!0), s(v, null, y(e.options, (r, b) => (u(), s("div", {
       key: b,
       class: n([e.radioClass, { [`${e.radioClass}--error`]: e.error }])
     }, [
@@ -397,7 +402,7 @@ const I = {
         "aria-invalid": e.error,
         disabled: e.disabled
       }, null, 42, J),
-      q(v, {
+      q(x, {
         forId: r.id,
         labelClass: `${e.radioClass}__title`,
         textLabel: r.label
@@ -405,8 +410,8 @@ const I = {
     ], 2))), 128));
   }
 }, W = {
-  install: (e, a) => {
-    e.component("TFormGroup", I), e.component("TLabel", v), e.component("TInputField", F), e.component("TUploadFile", G), e.component("TCheckbox", S), e.component("TError", E), e.component("THint", N), e.component("TTextArea", H), e.component("TSelect", z), e.component("TGroupCheckbox", j), e.component("TGroupRadio", K);
+  install: (e, d) => {
+    e.component("TFormGroup", I), e.component("TLabel", x), e.component("TInputField", F), e.component("TUploadFile", G), e.component("TCheckbox", S), e.component("TError", N), e.component("THint", E), e.component("TTextArea", H), e.component("TSelect", z), e.component("TGroupCheckbox", j), e.component("TGroupRadio", K);
   }
 };
 export {
