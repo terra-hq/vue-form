@@ -2,6 +2,14 @@
 
 Please register all relevant modifications to files, JS and state if these modifications took place in a staging, production or local environment, to which branches the files were commited and who did those changes.
 
+January 12th, 2024 | Add Toggle component | Julieta
+
+-   **Description**: Add toggle/switch component as TToggle
+-   **Main Card**: https://app.clickup.com/t/862kk6p27
+-   **Vue**:
+    -   components/TToggle.vue
+    -   README.md
+
 December 27th, 2023 | Upload to production | Julieta
 
 -   **Description**: Update components names and fix TUploadFile component. - Upload version 0.0.6

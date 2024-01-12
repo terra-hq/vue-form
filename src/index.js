@@ -11,11 +11,6 @@ import TGroupCheckbox from "./components/TGroupCheckbox.vue"
 import TGroupRadio from "./components/TGroupRadio.vue"
 import TToggle from "./components/TToggle.vue"
 
-import { createApp } from "vue"
-import App from "./App.vue"
-
-createApp(App).mount("#app")
-
 export default {
     install: (app, options) => {
         app.component("TFormGroup", TFormGroup)
