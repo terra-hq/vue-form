@@ -5,10 +5,16 @@ import TUploadFile from "./components/TUploadFile.vue"
 import TCheckbox from "./components/TCheckbox.vue"
 import TError from "./components/TError.vue"
 import THint from "./components/THint.vue"
-import TTextArea from "./components/TTextArea.vue"
+import TTextarea from "./components/TTextarea.vue"
 import TSelect from "./components/TSelect.vue"
 import TGroupCheckbox from "./components/TGroupCheckbox.vue"
 import TGroupRadio from "./components/TGroupRadio.vue"
+import TToggle from "./components/TToggle.vue"
+
+import { createApp } from "vue"
+import App from "./App.vue"
+
+createApp(App).mount("#app")
 
 export default {
     install: (app, options) => {
@@ -19,9 +25,10 @@ export default {
         app.component("TCheckbox", TCheckbox)
         app.component("TError", TError)
         app.component("THint", THint)
-        app.component("TTextArea", TTextArea)
+        app.component("TTextarea", TTextarea)
         app.component("TSelect", TSelect)
         app.component("TGroupCheckbox", TGroupCheckbox)
         app.component("TGroupRadio", TGroupRadio)
+        app.component("TToggle", TToggle)
     },
 }

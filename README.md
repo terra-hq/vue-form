@@ -19,11 +19,12 @@ import type { App } from "vue";
 import TFormGroup from "@terrahq/vue-form";
 import TLabel from "@terrahq/vue-form";
 import TInputField from "@terrahq/vue-form";
+import TToggle from "@terrahq/vue-form";
 import TCheckbox from "@terrahq/vue-form";
 import TGroupCheckbox from "@terrahq/vue-form";
 import TGroupRadio from "@terrahq/vue-form";
 import TSelect from "@terrahq/vue-form";
-import TTextArea from "@terrahq/vue-form";
+import TTextarea from "@terrahq/vue-form";
 import TError from "@terrahq/vue-form";
 import THint from "@terrahq/vue-form";
 
@@ -31,11 +32,12 @@ export default (app: App) => {
     app.use(TFormGroup);
     app.use(TLabel);
     app.use(TInputField);
+    app.use(TToggle);
     app.use(TCheckbox);
     app.use(TGroupCheckbox);
     app.use(TGroupRadio);
     app.use(TSelect);
-    app.use(TTextArea);
+    app.use(TTextarea);
     app.use(TError);
     app.use(THint);
 };
@@ -63,11 +65,12 @@ import TFormGroup from "@terrahq/vue-form"
 import TLabel from "@terrahq/vue-form"
 import TInputField from "@terrahq/vue-form"
 import TUploadFile from "@terrahq/vue-form"
+import TToggle from "@terrahq/vue-form"
 import TCheckbox from "@terrahq/vue-form"
 import TGroupCheckbox from "@terrahq/vue-form"
 import TGroupRadio from "@terrahq/vue-form"
 import TSelect from "@terrahq/vue-form"
-import TTextArea from "@terrahq/vue-form"
+import TTextarea from "@terrahq/vue-form"
 import TError from "@terrahq/vue-form"
 import THint from "@terrahq/vue-form"
 
@@ -77,11 +80,12 @@ export default defineNuxtPlugin((nuxtApp) => {
         TLabel,
         TInputField,
         TUploadFile,
+        TToggle,
         TCheckbox,
         TGroupCheckbox,
         TGroupRadio,
         TSelect,
-        TTextArea,
+        TTextarea,
         TError,
         THint
     )
@@ -90,88 +94,101 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 Now, you can use the components in any .vue file.
 
+#### Wordpress
+
 ## Usage
 
 ```sh
 <template>
-  <TFormGroup formClass="g--form-group-01">
-    <TLabel forId="firstName" labelClass="g--form-label-01" textLabel="First Name" />
+    <TFormGroup formClass="g--form-group-01">
+        <TLabel forId="firstName" labelClass="g--form-label-01" textLabel="First Name" />
 
-    <THint :hintMessage="hintMessage" hintClass="g--form-hint-01" />
+        <THint :hintMessage="hintMessage" hintClass="g--form-hint-01" />
 
-    <TInputField
-      type="text"
-      v-model="firstName"
-      id="firstName"
-      inputClass="g--form-input-01"
-      placeholder="First Name"
-      :error="error"
-      :required="required"
-      :maxlength="8"
-      :disabled="disabled"
-    />
+        <TInputField
+            type="text"
+            v-model="firstName"
+            id="firstName"
+            inputClass="g--form-input-01"
+            placeholder="First Name"
+            :error="error"
+            :required="required"
+            :maxlength="8"
+            :disabled="disabled"
+        />
 
-     <TCheckbox
-        v-model="terms"
-        id="terms"
-        checkboxClass="g--form-checkbox-01"
-        textLabel="Accept Terms and conditions"
-        :error="error"
-        :required="required"
-        :disabled="disabled"
-     />
+        <TToggle
+            v-model="toggleSwitch"
+            id="toggle"
+            toggleClass="g--toggle-01"
+            textLabelPrimary="Show Completed Tasks"
+            textLabelSecondary="Hide Completed Tasks"
+            :error="error"
+            :required="required"
+            :disabled="disabled"
+        />
 
-     <TGroupCheckbox
-        :options="checkboxOptions"
-        v-model="optionsChecked"
-        checkboxClass="g--form-checkbox-01"
-        :error="error"
-        :required="required"
-        :disabled="disabled"
-    />
+        <TCheckbox
+            v-model="terms"
+            id="terms"
+            checkboxClass="g--form-checkbox-01"
+            textLabel="Accept Terms and conditions"
+            :error="error"
+            :required="required"
+            :disabled="disabled"
+        />
 
-    <GroupRadio
-        :options="radioOptions"
-        v-model="radioSelected"
-        radioClass="g--form-radio-01"
-        :error="error"
-        :required="required"
-        :disabled="disabled"
-    />
+        <TGroupCheckbox
+            :options="checkboxOptions"
+            v-model="optionsChecked"
+            checkboxClass="g--form-checkbox-01"
+            :error="error"
+            :required="required"
+            :disabled="disabled"
+        />
 
-     <TSelect
-        id="cars"
-        selectClass="g--form-select-01"
-        :options="selectOptions"
-        v-model="optionSelected"
-        :required="required"
-        :error="error"
-    />
+        <TGroupRadio
+            :options="radioOptions"
+            v-model="radioSelected"
+            radioClass="g--form-radio-01"
+            :error="error"
+            :required="required"
+            :disabled="disabled"
+        />
 
-    <TTextArea
-        v-model="textAreaValue"
-        id="comments"
-        textAreaClass="g--form-textarea-01"
-        rows="5"
-        placeholder="Comments"
-        :required="required"
-        :error="error"
-        :disabled="disabled"
-    />
+        <TSelect
+            id="cars"
+            selectClass="g--form-select-01"
+            :options="selectOptions"
+            v-model="optionSelected"
+            :required="required"
+            :error="error"
+        />
 
-    <TUploadFile
-        :id="id"
-        uploadClass="g--form-upload-01"
-        :modelValue="uploadFile"
-        :multiple="multipleFiles"
-        :error="error"
-        :required="required"
-        :disabled="disabled"
-        accept="image/png, image/jpeg"
-    />
+        <TTextarea
+            v-model="textAreaValue"
+            id="comments"
+            textAreaClass="g--form-textarea-01"
+            rows="5"
+            placeholder="Comments"
+            :required="required"
+            :error="error"
+            :disabled="disabled"
+        />
 
-    <TError :errorMessage="errorMessage" errorClass="g--form-error-01" />
-  </TFormGroup>
+        <TUploadFile
+            id="uploadFile"
+            uploadClass="g--form-upload-01"
+            :modelValue="selectedFile"
+            :multiple="multipleFiles"
+            :error="error"
+            :required="required"
+            :disabled="disabled"
+            accept="image/png, image/jpeg"
+        />
+
+        <TError :errorMessage="errorMessage" errorClass="g--form-error-01" />
+    </TFormGroup>
 </template>
 
 <script setup>
@@ -179,6 +196,9 @@ import { ref } from "vue"
 
 // TInputField
 const firstName = ref("")
+
+// TToggle
+const toggleSwitch = ref(true)
 
 // TCheckbox
 const terms = ref(true)
@@ -213,17 +233,18 @@ const selectOptions = ref([
 ])
 const optionSelected = ref("one")
 
-// TTextArea
+// TTextarea
 const textAreaValue = ref("")
 
 // TUploadFile
 const multipleFiles = ref(false)
+const selectedFile = ref(null)
 
 // Error for inputs
-const error = ref(true)
+const error = ref(false)
 
 // Required for inputs
-const required = ref(false)
+const required = ref(true)
 
 // Disabled for inputs
 const disabled = ref(false)
@@ -241,7 +262,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
     The TFormGroup component is used to wrap other form components. It allows you to apply a common styling to the entire form group.
 
     -   Props:
-        -   **formClass**: (Required) CSS class for styling the form group - [String].
+        -   **formClass**: (Required) CSS class for styling the form group - (String).
 
 -   **TLabel**
     The TLabel component represents the label for an input element.
@@ -272,6 +293,18 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **disabled**: Boolean value indicating whether the input is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
+-   **TToggle**
+    The TToggle component represents a toggle/switch input.
+
+    -   Props:
+        -   **v-model**: (Required) Two-way binding for the toggle value - (Boolean).
+        -   **id**: (Required) ID of the toggle input - (String).
+        -   **toggleClass**: (Required) CSS class for styling the toggle - (String).
+        -   **textLabelPrimary & textLabelSecondary**: Text content of the labels (Optional - If not provided, labels will not be displayed) - (String).
+        -   **required**: Boolean value indicating whether the toggle is required (Optional - Default is false) - (Boolean).
+        -   **disabled**: Boolean value indicating whether the toggle is disabled (Optional - Default is false) - (Boolean).
+        -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
+
 -   **TCheckbox**
     The TCheckbox component represents a checkbox input.
 
@@ -288,8 +321,8 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
     The TGroupCheckbox component allows users to select multiple options from a list.
 
     -   Props:
-        -   **options**: (Required) An array of objects representing the options in the checkbox group. Each object should have the properties id (value of the option) and label (display label of the option) - ({id: String, label: String}[ ]).
-        -   **v-model**: (Required) Two-way binding for the selected options' values - (String[ ]).
+        -   **options**: (Required) An array of objects representing the options in the checkbox group. Each object should have the properties id (value of the option) and label (display label of the option) - ({id: String, label: String}[]).
+        -   **v-model**: (Required) Two-way binding for the selected options' values - (String[]).
         -   **groupClass**: (Required) CSS class for styling the checkbox group - (String).
         -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false) - (Boolean).
         -   **disabled**: Boolean value indicating whether the textarea is disabled (Optional - Default is false) - (Boolean).
@@ -299,7 +332,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
     The TGroupRadio component allows users to select a single option from a list of radio buttons.
 
     -   Props:
-        -   **options**: (Required) An array of objects representing the options in the radio button group. Each object should have the properties `id` (value of the option) and `label` (display label of the option) - [{id: String, label: String}[]].
+        -   **options**: (Required) An array of objects representing the options in the radio button group. Each object should have the properties `id` (value of the option) and `label` (display label of the option) - ({id: String, label: String}[]).
         -   **v-model**: (Required) Two-way binding for the selected option's value - (String).
         -   **radioClass**: (Required) CSS class for styling the radio button group - (String).
         -   **required**: Boolean value indicating whether the radio button group is required (Optional - Default is false) - (Boolean).
@@ -312,13 +345,13 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
     -   Props:
         -   **id**: (Required) ID of the select element - (String).
         -   **selectClass**: (Required) CSS class for styling the select - (String).
-        -   **options**: (Required) An array of objects representing the options in the select dropdown. Each object should have the properties `id` (value of the option), `label` (display label of the option) and `disabled` (optional - indicates if the option is disabled) - [{id: String, label: String, disabled: Boolean}[]].
+        -   **options**: (Required) An array of objects representing the options in the select dropdown. Each object should have the properties `id` (value of the option), `label` (display label of the option) and `disabled` (optional - indicates if the option is disabled) - ({id: String, label: String, disabled: Boolean}[]).
         -   **v-model**: (Required) Two-way binding for the selected option's value - (String).
         -   **required**: Boolean value indicating whether the select is required (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
 
--   **TTextArea**
-    The TTextArea component represents a multiline text input.
+-   **TTextarea**
+    The TTextarea component represents a multiline text input.
 
     -   Props:
         -   **id**: (Required) ID of the textarea element - (String).
