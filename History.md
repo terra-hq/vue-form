@@ -4,7 +4,7 @@ Please register all relevant modifications to files, JS and state if these modif
 
 January 12th, 2024 | Add Toggle component | Julieta
 
--   **Description**: Add toggle/switch component as TToggle
+-   **Description**: Add toggle/switch component as TToggle and update version 0.0.10
 -   **Main Card**: https://app.clickup.com/t/862kk6p27
 -   **Vue**:
     -   components/TToggle.vue
