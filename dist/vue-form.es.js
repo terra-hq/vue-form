@@ -92,7 +92,7 @@ const I = {
     id: String,
     uploadClass: String,
     modelValue: {
-      type: [File, Array],
+      type: Object,
       default: null
     },
     multiple: {
@@ -215,7 +215,7 @@ const I = {
       class: a(e.hintClass)
     }, f(e.hintMessage), 3)) : h("", !0);
   }
-}, D = ["id", "placeholder", "rows", "required", "aria-required", "aria-invalid", "disabled"], H = {
+}, O = ["id", "placeholder", "rows", "required", "aria-required", "aria-invalid", "disabled"], D = {
   __name: "TTextarea",
   props: {
     modelValue: String,
@@ -260,12 +260,12 @@ const I = {
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, D), [
+      }, null, 42, O), [
         [k, l.value]
       ])
     ], 2));
   }
-}, O = ["id", "required", "aria-required", "aria-invalid"], P = ["value", "disabled", "selected"], R = {
+}, H = ["id", "required", "aria-required", "aria-invalid"], P = ["value", "disabled", "selected"], R = {
   __name: "TSelect",
   props: {
     id: String,
@@ -304,12 +304,12 @@ const I = {
           disabled: i.disabled,
           selected: i.selected
         }, f(i.label), 9, P))), 128))
-      ], 42, O), [
+      ], 42, H), [
         [B, l.value]
       ])
     ], 2));
   }
-}, z = {
+}, j = {
   __name: "TGroupCheckbox",
   props: {
     options: Array,
@@ -358,7 +358,7 @@ const I = {
       disabled: e.disabled
     }, null, 8, ["modelValue", "onUpdate:modelValue", "id", "checkboxClass", "error", "required", "textLabel", "disabled"]))), 128));
   }
-}, j = ["id", "required", "checked", "onChange", "aria-required", "aria-invalid", "disabled"], J = {
+}, z = ["id", "required", "checked", "onChange", "aria-required", "aria-invalid", "disabled"], J = {
   __name: "TGroupRadio",
   props: {
     options: Array,
@@ -396,7 +396,7 @@ const I = {
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, j),
+      }, null, 42, z),
       x(v, {
         forId: i.id,
         labelClass: `${e.radioClass}__title`,
@@ -467,7 +467,7 @@ const I = {
   }
 }, Z = {
   install: (e, t) => {
-    e.component("TFormGroup", I), e.component("TLabel", v), e.component("TInputField", F), e.component("TUploadFile", G), e.component("TCheckbox", $), e.component("TError", E), e.component("THint", N), e.component("TTextarea", H), e.component("TSelect", R), e.component("TGroupCheckbox", z), e.component("TGroupRadio", J), e.component("TToggle", W);
+    e.component("TFormGroup", I), e.component("TLabel", v), e.component("TInputField", F), e.component("TUploadFile", G), e.component("TCheckbox", $), e.component("TError", E), e.component("THint", N), e.component("TTextarea", D), e.component("TSelect", R), e.component("TGroupCheckbox", j), e.component("TGroupRadio", J), e.component("TToggle", W);
   }
 };
 export {

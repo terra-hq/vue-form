@@ -2,6 +2,13 @@
 
 Please register all relevant modifications to files, JS and state if these modifications took place in a staging, production or local environment, to which branches the files were commited and who did those changes.
 
+January 18th, 2024 | Update TUploadFile | Julieta
+
+-   **Description**: update v-model and update version 0.0.13
+-   **Main Card**:
+-   **Vue**:
+    -   components/TUploadFile.vue
+
 January 12th, 2024 | Add Toggle component | Julieta
 
 -   **Description**: Add toggle/switch component as TToggle and update version 0.0.10
