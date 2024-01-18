@@ -22,7 +22,7 @@ December 27th, 2023 | Upload to production | Julieta
 -   **Description**: Update components names and fix TUploadFile component. - Upload version 0.0.6
 -   **Main Card**: https://app.clickup.com/t/862kk6p27
 -   **Vue**:
-    -   components/\*
+    -   components/
 
 December 21th, 2023 | Upload to production | Julieta
 
