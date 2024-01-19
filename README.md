@@ -96,6 +96,34 @@ Now, you can use the components in any .vue file.
 
 #### Wordpress
 
+In the JavaScript file of the corresponding page, whether it's a specific entry for each page or a global entry, the elements are imported as follows:
+
+```
+import { createApp } from 'vue';
+import App from '../../vue/App.vue';
+
+const app = createApp(App);
+
+import TFormGroup from "@terrahq/vue-form"
+import TLabel from "@terrahq/vue-form"
+import TInputField from "@terrahq/vue-form"
+import TUploadFile from "@terrahq/vue-form"
+import TToggle from "@terrahq/vue-form"
+import TCheckbox from "@terrahq/vue-form"
+import TGroupCheckbox from "@terrahq/vue-form"
+import TGroupRadio from "@terrahq/vue-form"
+import TSelect from "@terrahq/vue-form"
+import TTextarea from "@terrahq/vue-form"
+import TError from "@terrahq/vue-form"
+import THint from "@terrahq/vue-form"
+
+app.use(TFormGroup, TLabel, TInputField, TCheckbox, TGroupCheckbox, TGroupRadio, TSelect, TTextarea, TError, THint, TUploadFile, TToggle);
+
+app.mount('#app');
+```
+
+Now, you can use the components in any .vue file.
+
 ## Usage
 
 ```sh

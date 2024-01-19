@@ -2,6 +2,13 @@
 
 Please register all relevant modifications to files, JS and state if these modifications took place in a staging, production or local environment, to which branches the files were commited and who did those changes.
 
+January 19th, 2024 | Update README.md | Julieta
+
+-   **Description**: update readme for WP installation and update version 0.0.14
+-   **Main Card**: https://app.clickup.com/t/862kmw7q4
+-   **Vue**:
+    -   README.md
+
 January 18th, 2024 | Update TUploadFile | Julieta
 
 -   **Description**: update v-model and update version 0.0.13
