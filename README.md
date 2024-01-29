@@ -143,6 +143,7 @@ Now, you can use the components in any .vue file.
             :required="required"
             :maxlength="8"
             :disabled="disabled"
+            :extraAttrs="{ 'aria-label': 'something here', 'key': 'value' }"
         />
 
         <TToggle
