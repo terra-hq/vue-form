@@ -5,10 +5,12 @@
         v-model="selectedValues[index].checked"
         :id="option.id"
         :checkboxClass="checkboxClass"
+        :modifierClass="modifierClass"
         :error="error"
         :required="required"
         :textLabel="option.label"
         :disabled="disabled"
+        :extraAttrs="extraAttrs"
     />
 </template>
 
@@ -20,6 +22,10 @@ const props = defineProps({
     options: Array, // { id: string; label: string }[]
     modelValue: Array, // string[]
     checkboxClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
     error: {
         type: Boolean,
         default: false,
@@ -31,6 +37,10 @@ const props = defineProps({
     disabled: {
         type: Boolean,
         default: false,
+    },
+    extraAttrs: {
+        type: Object,
+        default: () => ({}),
     },
 })
 

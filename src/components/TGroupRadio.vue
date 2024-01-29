@@ -2,7 +2,7 @@
     <div
         v-for="(option, index) in options"
         :key="index"
-        :class="[radioClass, { [`${radioClass}--error`]: error }]"
+        :class="[radioClass, modifierClass, { [`${radioClass}--error`]: error }]"
     >
         <input
             :id="option.id"
@@ -14,6 +14,7 @@
             :aria-required="required"
             :aria-invalid="error"
             :disabled="disabled"
+            v-bind="extraAttrs"
         />
         <TLabel :forId="option.id" :labelClass="`${radioClass}__title`" :textLabel="option.label" />
     </div>
@@ -27,6 +28,10 @@ const props = defineProps({
     options: Array, // { id: string; label: string }[]
     modelValue: String,
     radioClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
     error: {
         type: Boolean,
         default: false,
@@ -38,6 +43,10 @@ const props = defineProps({
     disabled: {
         type: Boolean,
         default: false,
+    },
+    extraAttrs: {
+        type: Object,
+        default: () => ({}),
     },
 })
 

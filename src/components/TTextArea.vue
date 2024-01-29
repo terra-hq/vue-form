@@ -1,5 +1,5 @@
 <template>
-    <div :class="[textAreaClass, { [`${textAreaClass}--error`]: error }]">
+    <div :class="[textAreaClass, modifierClass, { [`${textAreaClass}--error`]: error }]">
         <textarea
             v-model="modelValue"
             :id="id"
@@ -11,6 +11,7 @@
             :aria-required="required"
             :aria-invalid="error"
             :disabled="disabled"
+            v-bind="extraAttrs"
         ></textarea>
     </div>
 </template>
@@ -22,6 +23,10 @@ const props = defineProps({
     modelValue: String,
     id: String,
     textAreaClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
     rows: {
         type: String,
         default: "3",
@@ -41,6 +46,10 @@ const props = defineProps({
     error: {
         type: Boolean,
         default: false,
+    },
+    extraAttrs: {
+        type: Object,
+        default: () => ({}),
     },
 })
 

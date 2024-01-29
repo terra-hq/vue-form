@@ -1,5 +1,5 @@
 <template>
-    <div :class="[inputClass, { [`${inputClass}--error`]: error }]">
+    <div :class="[inputClass, modifierClass, { [`${inputClass}--error`]: error }]">
         <input
             :type="type"
             :value="modelValue"
@@ -12,6 +12,7 @@
             :aria-required="required"
             :aria-invalid="error"
             :disabled="disabled"
+            v-bind="extraAttrs"
         />
     </div>
 </template>
@@ -27,6 +28,10 @@ const props = defineProps({
     modelValue: String,
     id: String,
     inputClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
     error: {
         type: Boolean,
         default: false,
@@ -46,6 +51,10 @@ const props = defineProps({
     disabled: {
         type: Boolean,
         default: false,
+    },
+    extraAttrs: {
+        type: Object,
+        default: () => ({}),
     },
 })
 

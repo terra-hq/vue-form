@@ -1,5 +1,5 @@
 <template>
-    <div :class="[toggleClass, { [`${toggleClass}--error`]: error }]">
+    <div :class="[toggleClass, modifierClass, { [`${toggleClass}--error`]: error }]">
         <input
             :id="id"
             type="checkbox"
@@ -11,6 +11,7 @@
             :aria-required="required"
             :aria-invalid="error"
             :disabled="disabled"
+            v-bind="extraAttrs"
         />
         <label :for="id" :class="[`${toggleClass}__content`]">
             <span :class="[`${toggleClass}__item-primary`]">{{ textLabelPrimary }}</span>
@@ -26,6 +27,10 @@ import { ref, watch } from "vue"
 const props = defineProps({
     id: String,
     toggleClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
     modelValue: Boolean,
     textLabelPrimary: {
         type: String,
@@ -46,6 +51,10 @@ const props = defineProps({
     disabled: {
         type: Boolean,
         default: false,
+    },
+    extraAttrs: {
+        type: Object,
+        default: () => ({}),
     },
 })
 

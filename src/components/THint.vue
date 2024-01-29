@@ -1,5 +1,5 @@
 <template>
-    <p v-if="hintMessage" :class="hintClass">
+    <p v-if="hintMessage" :class="[hintClass, modifierClass]">
         {{ hintMessage }}
     </p>
 </template>
@@ -11,5 +11,9 @@ const props = defineProps({
         default: null,
     },
     hintClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
 })
 </script>

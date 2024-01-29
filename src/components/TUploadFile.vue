@@ -1,5 +1,5 @@
 <template>
-    <div :class="[uploadClass, { [`${uploadClass}--error`]: error }]">
+    <div :class="[uploadClass, modifierClass, { [`${uploadClass}--error`]: error }]">
         <input
             type="file"
             :id="id"
@@ -11,6 +11,7 @@
             :aria-required="required"
             :aria-invalid="error"
             :disabled="disabled"
+            v-bind="extraAttrs"
         />
     </div>
 </template>
@@ -20,6 +21,10 @@ import { watch } from "vue"
 const props = defineProps({
     id: String,
     uploadClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
     modelValue: {
         type: Object,
         default: null,
@@ -43,6 +48,10 @@ const props = defineProps({
     accept: {
         type: String,
         default: "",
+    },
+    extraAttrs: {
+        type: Object,
+        default: () => ({}),
     },
 })
 

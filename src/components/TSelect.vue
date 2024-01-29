@@ -1,5 +1,5 @@
 <template>
-    <div :class="[selectClass, { [`${selectClass}--error`]: error }]">
+    <div :class="[selectClass, modifierClass, { [`${selectClass}--error`]: error }]">
         <select
             :id="id"
             :required="required"
@@ -8,6 +8,7 @@
             @input="handleSelectChange"
             :aria-required="required"
             :aria-invalid="error"
+            v-bind="extraAttrs"
         >
             <option
                 v-for="option in options"
@@ -15,6 +16,7 @@
                 :value="option.id"
                 :disabled="option.disabled"
                 :selected="option.selected"
+                v-bind="optionsAttrs"
             >
                 {{ option.label }}
             </option>
@@ -28,6 +30,10 @@ import { ref } from "vue"
 const props = defineProps({
     id: String,
     selectClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
     options: Array,
     modelValue: String,
     error: {
@@ -37,6 +43,14 @@ const props = defineProps({
     required: {
         type: Boolean,
         default: false,
+    },
+    extraAttrs: {
+        type: Object,
+        default: () => ({}),
+    },
+    optionsAttrs: {
+        type: Object,
+        default: () => ({}),
     },
 })
 

@@ -1,5 +1,5 @@
 <template>
-    <p v-if="errorMessage" :class="errorClass">{{ errorMessage }}</p>
+    <p v-if="errorMessage" :class="[errorClass, modifierClass]">{{ errorMessage }}</p>
 </template>
 
 <script setup>
@@ -9,5 +9,9 @@ const props = defineProps({
         default: null,
     },
     errorClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
 })
 </script>

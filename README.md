@@ -291,6 +291,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
 
     -   Props:
         -   **formClass**: (Required) CSS class for styling the form group - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
 
 -   **TLabel**
     The TLabel component represents the label for an input element.
@@ -298,6 +299,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
     -   Props:
         -   **forId**: (Required) ID of the associated input element - (String).
         -   **labelClass**: (Required) CSS class for styling the label - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **textLabel**: Text content of the label (Optional - If not provided, label will not be displayed) - (String).
 
 -   **THint**
@@ -305,6 +307,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
 
     -   Props:
         -   **hintClass**: (Required) CSS class for styling the hint - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **hintMessage**: Text content of the hint (Optional - If not provided, hint will not be displayed) - (String).
 
 -   **TInputField**
@@ -315,11 +318,13 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **v-model**: (Required) Two-way binding for the input value - (String).
         -   **id**: (Required) ID of the input element - (String).
         -   **inputClass**: (Required) CSS class for styling the input - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **maxlength**: Maximum number of characters allowed in the input (Optional) - (Number).
         -   **placeholder**: Placeholder text for the input (Optional - If not provided, placeholder will not be displayed) - (String).
         -   **required**: Boolean value indicating whether the input is required (Optional - Default is false) - (Boolean).
         -   **disabled**: Boolean value indicating whether the input is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
+        -   **extraAttrs**: Allows including additional attributes dynamically to adapt the behavior and presentation of this element according to the specific needs of each project - ({key, value}[])
 
 -   **TToggle**
     The TToggle component represents a toggle/switch input.
@@ -328,10 +333,12 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **v-model**: (Required) Two-way binding for the toggle value - (Boolean).
         -   **id**: (Required) ID of the toggle input - (String).
         -   **toggleClass**: (Required) CSS class for styling the toggle - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **textLabelPrimary & textLabelSecondary**: Text content of the labels (Optional - If not provided, labels will not be displayed) - (String).
         -   **required**: Boolean value indicating whether the toggle is required (Optional - Default is false) - (Boolean).
         -   **disabled**: Boolean value indicating whether the toggle is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
+        -   **extraAttrs**: Allows including additional attributes dynamically to adapt the behavior and presentation of this element according to the specific needs of each project - ({key, value}[])
 
 -   **TCheckbox**
     The TCheckbox component represents a checkbox input.
@@ -340,10 +347,12 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **v-model**: (Required) Two-way binding for the checkbox value - (Boolean).
         -   **id**: (Required) ID of the checkbox input - (String).
         -   **checkboxClass**: (Required) CSS class for styling the checkbox - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **textLabel**: Text content of the label (Optional - If not provided, label will not be displayed) - (String).
         -   **required**: Boolean value indicating whether the checkbox is required (Optional - Default is false) - (Boolean).
         -   **disabled**: Boolean value indicating whether the checkbox is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
+        -   **extraAttrs**: Allows including additional attributes dynamically to adapt the behavior and presentation of this element according to the specific needs of each project - ({key, value}[])
 
 -   **Group of checkbox**
     The TGroupCheckbox component allows users to select multiple options from a list.
@@ -352,9 +361,11 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **options**: (Required) An array of objects representing the options in the checkbox group. Each object should have the properties id (value of the option) and label (display label of the option) - ({id: String, label: String}[]).
         -   **v-model**: (Required) Two-way binding for the selected options' values - (String[]).
         -   **groupClass**: (Required) CSS class for styling the checkbox group - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false) - (Boolean).
         -   **disabled**: Boolean value indicating whether the textarea is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added to each checkbox individually (Optional - Default is false) - (Boolean).
+        -   **extraAttrs**: Allows including additional attributes dynamically to adapt the behavior and presentation of this element according to the specific needs of each project - ({key, value}[])
 
 -   **Group of radio buttons**
     The TGroupRadio component allows users to select a single option from a list of radio buttons.
@@ -363,9 +374,11 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
         -   **options**: (Required) An array of objects representing the options in the radio button group. Each object should have the properties `id` (value of the option) and `label` (display label of the option) - ({id: String, label: String}[]).
         -   **v-model**: (Required) Two-way binding for the selected option's value - (String).
         -   **radioClass**: (Required) CSS class for styling the radio button group - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **required**: Boolean value indicating whether the radio button group is required (Optional - Default is false) - (Boolean).
         -   **disabled**: Boolean value indicating whether the radio button group is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - Boolean.
+        -   **extraAttrs**: Allows including additional attributes dynamically to adapt the behavior and presentation of this element according to the specific needs of each project - ({key, value}[])
 
 -   **TSelect**
     The TSelect component represents a dropdown selection.
@@ -373,10 +386,13 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
     -   Props:
         -   **id**: (Required) ID of the select element - (String).
         -   **selectClass**: (Required) CSS class for styling the select - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **options**: (Required) An array of objects representing the options in the select dropdown. Each object should have the properties `id` (value of the option), `label` (display label of the option) and `disabled` (optional - indicates if the option is disabled) - ({id: String, label: String, disabled: Boolean}[]).
         -   **v-model**: (Required) Two-way binding for the selected option's value - (String).
         -   **required**: Boolean value indicating whether the select is required (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
+        -   **extraAttrs**: Allows including additional attributes dynamically to adapt the behavior and presentation of this element according to the specific needs of each project - ({key, value}[])
+        -   **optionAttrs**: Allows including additional attributes dynamically to adapt the behavior and presentation of the options according to the specific needs of each project - ({key, value}[])
 
 -   **TTextarea**
     The TTextarea component represents a multiline text input.
@@ -384,12 +400,14 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
     -   Props:
         -   **id**: (Required) ID of the textarea element - (String).
         -   **textAreaClass**: (Required) CSS class for styling the textarea - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **v-model**: (Required) Two-way binding for the textarea value - (String).
         -   **rows**: Number of rows for the textarea (Optional - Default is 3) - (Number).
         -   **placeholder**: Placeholder text for the textarea (Optional - If not provided, placeholder will not be displayed) - (String).
         -   **required**: Boolean value indicating whether the textarea is required (Optional - Default is false) - (Boolean).
         -   **disabled**: Boolean value indicating whether the textarea is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
+        -   **extraAttrs**: Allows including additional attributes dynamically to adapt the behavior and presentation of this element according to the specific needs of each project - ({key, value}[])
 
 -   **TUploadFile**
     The TUploadFile component allows users to upload files.
@@ -397,12 +415,14 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
     -   Props:
         -   **id**: (Required) ID of the file input element - (String).
         -   **textAreaClass**: (Required) CSS class for styling the file upload - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
         -   **v-model**: (Required) Two-way binding for the uploaded file's value - ([File, String]).
         -   **multiple**: Boolean value indicating whether multiple file selection is allowed (Optional - Default is false) - (Boolean).
         -   **accept**: File types that can be selected. Specified using MIME types, separated by commas (Optional - Default is an empty string) - (String).
         -   **required**: Boolean value indicating whether the file upload is required (Optional - Default is false) - (Boolean).
         -   **disabled**: Boolean value indicating whether the file upload is disabled (Optional - Default is false) - (Boolean).
         -   **error**: Boolean value indicating whether there is an error. If true, the "--error" class is automatically added (Optional - Default is false) - (Boolean).
+        -   **extraAttrs**: Allows including additional attributes dynamically to adapt the behavior and presentation of this element according to the specific needs of each project - ({key, value}[])
 
 -   **TError**
     The TError component displays an error message.
@@ -410,6 +430,7 @@ const errorMessage = ref("Debes completar todos los campos requeridos")
     -   Props:
         -   **errorMessage**: Error message to be displayed (Optional - If not provided, error message will not be displayed) - (String).
         -   **errorClass**: (Required) CSS class for styling the error message - (String).
+        -   **modifierClass**: CSS class for styling with a modifier class - If not provided, it will not be displayed - (String).
 
 #### Note:
 

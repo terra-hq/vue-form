@@ -1,5 +1,7 @@
 <template>
-    <label v-if="textLabel" :for="forId" :class="labelClass">{{ textLabel }}</label>
+    <label v-if="textLabel" :for="forId" :class="[labelClass, modifierClass]">{{
+        textLabel
+    }}</label>
 </template>
 
 <script setup>
@@ -10,5 +12,9 @@ const props = defineProps({
     },
     forId: String,
     labelClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
 })
 </script>

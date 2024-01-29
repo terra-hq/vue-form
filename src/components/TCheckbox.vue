@@ -1,5 +1,5 @@
 <template>
-    <div :class="[checkboxClass, { [`${checkboxClass}--error`]: error }]">
+    <div :class="[checkboxClass, modifierClass, { [`${checkboxClass}--error`]: error }]">
         <input
             :id="id"
             type="checkbox"
@@ -11,6 +11,7 @@
             :aria-required="required"
             :aria-invalid="error"
             :disabled="disabled"
+            v-bind="extraAttrs"
         />
         <TLabel :forId="id" :labelClass="`${checkboxClass}__title`" :textLabel="textLabel" />
     </div>
@@ -22,6 +23,10 @@ import TLabel from "./TLabel.vue"
 const props = defineProps({
     id: String,
     checkboxClass: String,
+    modifierClass: {
+        type: String,
+        default: "",
+    },
     modelValue: Boolean,
     textLabel: {
         type: String,
@@ -38,6 +43,10 @@ const props = defineProps({
     disabled: {
         type: Boolean,
         default: false,
+    },
+    extraAttrs: {
+        type: Object,
+        default: () => ({}),
     },
 })
 
