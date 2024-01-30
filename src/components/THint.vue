@@ -1,7 +1,5 @@
 <template>
-    <p v-if="hintMessage" :class="[hintClass, modifierClass]">
-        {{ hintMessage }}
-    </p>
+    <div v-if="hintMessage" :class="[hintClass, modifierClass]" v-html="hintMessage"></div>
 </template>
 
 <script setup>

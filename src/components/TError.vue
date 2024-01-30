@@ -1,5 +1,5 @@
 <template>
-    <p v-if="errorMessage" :class="[errorClass, modifierClass]">{{ errorMessage }}</p>
+    <div v-if="errorMessage" :class="[errorClass, modifierClass]" v-html="errorMessage"></div>
 </template>
 
 <script setup>

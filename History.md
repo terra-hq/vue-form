@@ -2,6 +2,14 @@
 
 Please register all relevant modifications to files, JS and state if these modifications took place in a staging, production or local environment, to which branches the files were commited and who did those changes.
 
+January 30th, 2024 | Update error and hint | Julieta
+
+-   **Description**: change TError and THint message and update version 0.0.16
+-   **Main Card**: https://app.clickup.com/t/86drc8q36
+-   **Vue**:
+    -   components/THint.vue
+    -   components/TError.vue
+
 January 29th, 2024 | Update components | Julieta
 
 -   **Description**: add extraAttrs and update version 0.0.15
