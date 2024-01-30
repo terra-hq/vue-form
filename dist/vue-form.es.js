@@ -1,17 +1,21 @@
-import { openBlock as u, createElementBlock as s, normalizeClass as a, renderSlot as S, toDisplayString as f, createCommentVNode as h, ref as g, watch as q, createElementVNode as m, createVNode as x, withDirectives as V, vModelText as k, Fragment as C, renderList as y, vModelSelect as B, reactive as T, createBlock as L } from "vue";
-const I = {
+import { openBlock as s, createElementBlock as u, normalizeClass as n, renderSlot as k, toDisplayString as C, createCommentVNode as y, ref as g, watch as S, createElementVNode as m, mergeProps as f, createVNode as q, withDirectives as $, vModelText as T, Fragment as h, renderList as x, vModelSelect as A, reactive as B, createBlock as L } from "vue";
+const M = {
   __name: "TFormGroup",
   props: {
-    formClass: String
+    formClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    }
   },
   setup(e) {
-    return (t, r) => (u(), s("div", {
-      class: a([e.formClass])
+    return (a, l) => (s(), u("div", {
+      class: n([e.formClass, e.modifierClass])
     }, [
-      S(t.$slots, "default")
+      k(a.$slots, "default")
     ], 2));
   }
-}, M = ["for"], v = {
+}, I = ["for"], v = {
   __name: "TLabel",
   props: {
     textLabel: {
@@ -19,16 +23,20 @@ const I = {
       default: ""
     },
     forId: String,
-    labelClass: String
+    labelClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    }
   },
   setup(e) {
-    return (t, r) => e.textLabel ? (u(), s("label", {
+    return (a, l) => e.textLabel ? (s(), u("label", {
       key: 0,
       for: e.forId,
-      class: a(e.labelClass)
-    }, f(e.textLabel), 11, M)) : h("", !0);
+      class: n([e.labelClass, e.modifierClass])
+    }, C(e.textLabel), 11, I)) : y("", !0);
   }
-}, A = ["type", "value", "id", "maxlength", "placeholder", "required", "aria-required", "aria-invalid", "disabled"], F = {
+}, O = ["type", "value", "id", "maxlength", "placeholder", "required", "aria-required", "aria-invalid", "disabled"], j = {
   __name: "TInputField",
   props: {
     type: {
@@ -38,6 +46,10 @@ const I = {
     modelValue: String,
     id: String,
     inputClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    },
     error: {
       type: Boolean,
       default: !1
@@ -57,40 +69,48 @@ const I = {
     disabled: {
       type: Boolean,
       default: !1
+    },
+    extraAttrs: {
+      type: Object,
+      default: () => ({})
     }
   },
-  setup(e, { emit: t }) {
-    const r = e, l = g(r.modelValue), o = t, d = (n) => {
-      l.value = n.target.value, o("update:modelValue", l.value);
+  setup(e, { emit: a }) {
+    const l = e, t = g(l.modelValue), o = a, r = (d) => {
+      t.value = d.target.value, o("update:modelValue", t.value);
     };
-    return q(
-      () => r.modelValue,
-      (n) => {
-        l.value = n;
+    return S(
+      () => l.modelValue,
+      (d) => {
+        t.value = d;
       }
-    ), (n, c) => (u(), s("div", {
-      class: a([e.inputClass, { [`${e.inputClass}--error`]: e.error }])
+    ), (d, c) => (s(), u("div", {
+      class: n([e.inputClass, e.modifierClass, { [`${e.inputClass}--error`]: e.error }])
     }, [
-      m("input", {
+      m("input", f({
         type: e.type,
-        value: l.value,
+        value: t.value,
         id: e.id,
-        class: a([`${e.inputClass}__item`]),
-        onInput: d,
+        class: [`${e.inputClass}__item`],
+        onInput: r,
         maxlength: e.maxlength,
         placeholder: e.placeholder,
         required: e.required,
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, A)
+      }, e.extraAttrs), null, 16, O)
     ], 2));
   }
-}, w = ["id", "accept", "multiple", "required", "aria-required", "aria-invalid", "disabled"], G = {
+}, F = ["id", "accept", "multiple", "required", "aria-required", "aria-invalid", "disabled"], w = {
   __name: "TUploadFile",
   props: {
     id: String,
     uploadClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    },
     modelValue: {
       type: Object,
       default: null
@@ -114,35 +134,43 @@ const I = {
     accept: {
       type: String,
       default: ""
+    },
+    extraAttrs: {
+      type: Object,
+      default: () => ({})
     }
   },
-  setup(e, { emit: t }) {
-    const r = t, l = (o) => {
-      const d = o.target.files, c = o.target.multiple ? d : d[0];
-      r("update:modelValue", c);
+  setup(e, { emit: a }) {
+    const l = a, t = (o) => {
+      const r = o.target.files, c = o.target.multiple ? r : r[0];
+      l("update:modelValue", c);
     };
-    return (o, d) => (u(), s("div", {
-      class: a([e.uploadClass, { [`${e.uploadClass}--error`]: e.error }])
+    return (o, r) => (s(), u("div", {
+      class: n([e.uploadClass, e.modifierClass, { [`${e.uploadClass}--error`]: e.error }])
     }, [
-      m("input", {
+      m("input", f({
         type: "file",
         id: e.id,
-        class: a([`${e.uploadClass}__item`]),
+        class: [`${e.uploadClass}__item`],
         accept: e.accept,
-        onInput: l,
+        onInput: t,
         multiple: e.multiple,
         required: e.required,
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, w)
+      }, e.extraAttrs), null, 16, F)
     ], 2));
   }
-}, U = ["id", "required", "checked", "value", "aria-required", "aria-invalid", "disabled"], $ = {
+}, G = ["id", "required", "checked", "value", "aria-required", "aria-invalid", "disabled"], V = {
   __name: "TCheckbox",
   props: {
     id: String,
     checkboxClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    },
     modelValue: Boolean,
     textLabel: {
       type: String,
@@ -159,68 +187,86 @@ const I = {
     disabled: {
       type: Boolean,
       default: !1
+    },
+    extraAttrs: {
+      type: Object,
+      default: () => ({})
     }
   },
   emits: ["update:modelValue"],
   setup(e) {
-    return (t, r) => (u(), s("div", {
-      class: a([e.checkboxClass, { [`${e.checkboxClass}--error`]: e.error }])
+    return (a, l) => (s(), u("div", {
+      class: n([e.checkboxClass, e.modifierClass, { [`${e.checkboxClass}--error`]: e.error }])
     }, [
-      m("input", {
+      m("input", f({
         id: e.id,
         type: "checkbox",
-        class: a([`${e.checkboxClass}__item`]),
+        class: [`${e.checkboxClass}__item`],
         required: e.required,
         checked: e.modelValue,
         value: e.modelValue,
-        onChange: r[0] || (r[0] = (l) => t.$emit("update:modelValue", !e.modelValue)),
+        onChange: l[0] || (l[0] = (t) => a.$emit("update:modelValue", !e.modelValue)),
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, U),
-      x(v, {
+      }, e.extraAttrs), null, 16, G),
+      q(v, {
         forId: e.id,
         labelClass: `${e.checkboxClass}__title`,
         textLabel: e.textLabel
       }, null, 8, ["forId", "labelClass", "textLabel"])
     ], 2));
   }
-}, E = {
+}, H = ["innerHTML"], U = {
   __name: "TError",
   props: {
     errorMessage: {
       type: String,
       default: null
     },
-    errorClass: String
+    errorClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    }
   },
   setup(e) {
-    return (t, r) => e.errorMessage ? (u(), s("p", {
+    return (a, l) => e.errorMessage ? (s(), u("div", {
       key: 0,
-      class: a(e.errorClass)
-    }, f(e.errorMessage), 3)) : h("", !0);
+      class: n([e.errorClass, e.modifierClass]),
+      innerHTML: e.errorMessage
+    }, null, 10, H)) : y("", !0);
   }
-}, N = {
+}, E = ["innerHTML"], N = {
   __name: "THint",
   props: {
     hintMessage: {
       type: String,
       default: null
     },
-    hintClass: String
+    hintClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    }
   },
   setup(e) {
-    return (t, r) => e.hintMessage ? (u(), s("p", {
+    return (a, l) => e.hintMessage ? (s(), u("div", {
       key: 0,
-      class: a(e.hintClass)
-    }, f(e.hintMessage), 3)) : h("", !0);
+      class: n([e.hintClass, e.modifierClass]),
+      innerHTML: e.hintMessage
+    }, null, 10, E)) : y("", !0);
   }
-}, O = ["id", "placeholder", "rows", "required", "aria-required", "aria-invalid", "disabled"], D = {
-  __name: "TTextarea",
+}, P = ["id", "placeholder", "rows", "required", "aria-required", "aria-invalid", "disabled"], D = {
+  __name: "TTextArea",
   props: {
     modelValue: String,
     id: String,
     textAreaClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    },
     rows: {
       type: String,
       default: "3"
@@ -240,36 +286,44 @@ const I = {
     error: {
       type: Boolean,
       default: !1
+    },
+    extraAttrs: {
+      type: Object,
+      default: () => ({})
     }
   },
-  setup(e, { emit: t }) {
-    const l = g(e.modelValue), o = t, d = (n) => {
-      l.value = n.target.value, o("update:modelValue", l.value);
+  setup(e, { emit: a }) {
+    const t = g(e.modelValue), o = a, r = (d) => {
+      t.value = d.target.value, o("update:modelValue", t.value);
     };
-    return (n, c) => (u(), s("div", {
-      class: a([e.textAreaClass, { [`${e.textAreaClass}--error`]: e.error }])
+    return (d, c) => (s(), u("div", {
+      class: n([e.textAreaClass, e.modifierClass, { [`${e.textAreaClass}--error`]: e.error }])
     }, [
-      V(m("textarea", {
-        "onUpdate:modelValue": c[0] || (c[0] = (i) => l.value = i),
+      $(m("textarea", f({
+        "onUpdate:modelValue": c[0] || (c[0] = (i) => t.value = i),
         id: e.id,
-        class: a([`${e.textAreaClass}__item`]),
+        class: [`${e.textAreaClass}__item`],
         placeholder: e.placeholder,
         rows: e.rows,
-        onInput: d,
+        onInput: r,
         required: e.required,
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, O), [
-        [k, l.value]
+      }, e.extraAttrs), null, 16, P), [
+        [T, t.value]
       ])
     ], 2));
   }
-}, H = ["id", "required", "aria-required", "aria-invalid"], P = ["value", "disabled", "selected"], R = {
+}, R = ["id", "required", "aria-required", "aria-invalid"], z = ["value", "disabled", "selected"], J = {
   __name: "TSelect",
   props: {
     id: String,
     selectClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    },
     options: Array,
     modelValue: String,
     error: {
@@ -279,37 +333,45 @@ const I = {
     required: {
       type: Boolean,
       default: !1
+    },
+    extraAttrs: {
+      type: Object,
+      default: () => ({})
+    },
+    optionsAttrs: {
+      type: Object,
+      default: () => ({})
     }
   },
   emits: ["update:modelValue"],
-  setup(e, { emit: t }) {
-    const l = g(e.modelValue), o = t, d = (n) => {
-      l.value = n.target.value, o("update:modelValue", l.value);
+  setup(e, { emit: a }) {
+    const t = g(e.modelValue), o = a, r = (d) => {
+      t.value = d.target.value, o("update:modelValue", t.value);
     };
-    return (n, c) => (u(), s("div", {
-      class: a([e.selectClass, { [`${e.selectClass}--error`]: e.error }])
+    return (d, c) => (s(), u("div", {
+      class: n([e.selectClass, e.modifierClass, { [`${e.selectClass}--error`]: e.error }])
     }, [
-      V(m("select", {
+      $(m("select", f({
         id: e.id,
         required: e.required,
-        class: a([`${e.selectClass}__item`]),
-        "onUpdate:modelValue": c[0] || (c[0] = (i) => l.value = i),
-        onInput: d,
+        class: [`${e.selectClass}__item`],
+        "onUpdate:modelValue": c[0] || (c[0] = (i) => t.value = i),
+        onInput: r,
         "aria-required": e.required,
         "aria-invalid": e.error
-      }, [
-        (u(!0), s(C, null, y(e.options, (i) => (u(), s("option", {
+      }, e.extraAttrs), [
+        (s(!0), u(h, null, x(e.options, (i) => (s(), u("option", f({
           key: i.id,
           value: i.id,
           disabled: i.disabled,
           selected: i.selected
-        }, f(i.label), 9, P))), 128))
-      ], 42, H), [
-        [B, l.value]
+        }, e.optionsAttrs), C(i.label), 17, z))), 128))
+      ], 16, R), [
+        [A, t.value]
       ])
     ], 2));
   }
-}, j = {
+}, K = {
   __name: "TGroupCheckbox",
   props: {
     options: Array,
@@ -317,6 +379,10 @@ const I = {
     modelValue: Array,
     // string[]
     checkboxClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    },
     error: {
       type: Boolean,
       default: !1
@@ -328,43 +394,53 @@ const I = {
     disabled: {
       type: Boolean,
       default: !1
+    },
+    extraAttrs: {
+      type: Object,
+      default: () => ({})
     }
   },
   emits: ["update:modelValue"],
-  setup(e, { emit: t }) {
-    const r = e, l = T(
-      r.options.map((d) => {
-        var n;
+  setup(e, { emit: a }) {
+    const l = e, t = B(
+      l.options.map((r) => {
+        var d;
         return {
-          ...d,
-          checked: g((n = r.modelValue) == null ? void 0 : n.includes(d.id)) || !1
+          ...r,
+          checked: g((d = l.modelValue) == null ? void 0 : d.includes(r.id)) || !1
         };
       })
-    ), o = t;
-    return q(l, () => {
+    ), o = a;
+    return S(t, () => {
       o(
         "update:modelValue",
-        l.filter((d) => d.checked).map((d) => d.id)
+        t.filter((r) => r.checked).map((r) => r.id)
       );
-    }), (d, n) => (u(!0), s(C, null, y(e.options, (c, i) => (u(), L($, {
+    }), (r, d) => (s(!0), u(h, null, x(e.options, (c, i) => (s(), L(V, {
       key: i,
-      modelValue: l[i].checked,
-      "onUpdate:modelValue": (b) => l[i].checked = b,
+      modelValue: t[i].checked,
+      "onUpdate:modelValue": (b) => t[i].checked = b,
       id: c.id,
       checkboxClass: e.checkboxClass,
+      modifierClass: e.modifierClass,
       error: e.error,
       required: e.required,
       textLabel: c.label,
-      disabled: e.disabled
-    }, null, 8, ["modelValue", "onUpdate:modelValue", "id", "checkboxClass", "error", "required", "textLabel", "disabled"]))), 128));
+      disabled: e.disabled,
+      extraAttrs: e.extraAttrs
+    }, null, 8, ["modelValue", "onUpdate:modelValue", "id", "checkboxClass", "modifierClass", "error", "required", "textLabel", "disabled", "extraAttrs"]))), 128));
   }
-}, z = ["id", "required", "checked", "onChange", "aria-required", "aria-invalid", "disabled"], J = {
+}, Q = ["id", "required", "checked", "onChange", "aria-required", "aria-invalid", "disabled"], W = {
   __name: "TGroupRadio",
   props: {
     options: Array,
     // { id: string; label: string }[]
     modelValue: String,
     radioClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    },
     error: {
       type: Boolean,
       default: !1
@@ -376,39 +452,47 @@ const I = {
     disabled: {
       type: Boolean,
       default: !1
+    },
+    extraAttrs: {
+      type: Object,
+      default: () => ({})
     }
   },
-  setup(e, { emit: t }) {
-    const l = g(e.modelValue), o = t, d = (n) => {
-      l.value = n, o("update:modelValue", l.value);
+  setup(e, { emit: a }) {
+    const t = g(e.modelValue), o = a, r = (d) => {
+      t.value = d, o("update:modelValue", t.value);
     };
-    return (n, c) => (u(!0), s(C, null, y(e.options, (i, b) => (u(), s("div", {
+    return (d, c) => (s(!0), u(h, null, x(e.options, (i, b) => (s(), u("div", {
       key: b,
-      class: a([e.radioClass, { [`${e.radioClass}--error`]: e.error }])
+      class: n([e.radioClass, e.modifierClass, { [`${e.radioClass}--error`]: e.error }])
     }, [
-      m("input", {
+      m("input", f({
         id: i.id,
         type: "radio",
-        class: a([`${e.radioClass}__item`]),
+        class: [`${e.radioClass}__item`],
         required: e.required,
-        checked: i.id === l.value,
-        onChange: (X) => d(i.id),
+        checked: i.id === t.value,
+        onChange: (p) => r(i.id),
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, z),
-      x(v, {
+      }, e.extraAttrs), null, 16, Q),
+      q(v, {
         forId: i.id,
         labelClass: `${e.radioClass}__title`,
         textLabel: i.label
       }, null, 8, ["forId", "labelClass", "textLabel"])
     ], 2))), 128));
   }
-}, K = ["id", "required", "checked", "value", "aria-required", "aria-invalid", "disabled"], Q = ["for"], W = {
+}, X = ["id", "required", "checked", "value", "aria-required", "aria-invalid", "disabled"], Y = ["for"], Z = {
   __name: "TToggle",
   props: {
     id: String,
     toggleClass: String,
+    modifierClass: {
+      type: String,
+      default: ""
+    },
     modelValue: Boolean,
     textLabelPrimary: {
       type: String,
@@ -429,47 +513,51 @@ const I = {
     disabled: {
       type: Boolean,
       default: !1
+    },
+    extraAttrs: {
+      type: Object,
+      default: () => ({})
     }
   },
   emits: ["update:modelValue"],
   setup(e) {
-    return (t, r) => (u(), s("div", {
-      class: a([e.toggleClass, { [`${e.toggleClass}--error`]: e.error }])
+    return (a, l) => (s(), u("div", {
+      class: n([e.toggleClass, e.modifierClass, { [`${e.toggleClass}--error`]: e.error }])
     }, [
-      m("input", {
+      m("input", f({
         id: e.id,
         type: "checkbox",
-        class: a([`${e.toggleClass}__item`]),
+        class: [`${e.toggleClass}__item`],
         required: e.required,
         checked: e.modelValue,
         value: e.modelValue,
-        onChange: r[0] || (r[0] = (l) => t.$emit("update:modelValue", !e.modelValue)),
+        onChange: l[0] || (l[0] = (t) => a.$emit("update:modelValue", !e.modelValue)),
         "aria-required": e.required,
         "aria-invalid": e.error,
         disabled: e.disabled
-      }, null, 42, K),
+      }, e.extraAttrs), null, 16, X),
       m("label", {
         for: e.id,
-        class: a([`${e.toggleClass}__content`])
+        class: n([`${e.toggleClass}__content`])
       }, [
         m("span", {
-          class: a([`${e.toggleClass}__item-primary`])
-        }, f(e.textLabelPrimary), 3),
+          class: n([`${e.toggleClass}__item-primary`])
+        }, C(e.textLabelPrimary), 3),
         m("span", {
-          class: a([`${e.toggleClass}__item-secondary`])
-        }, f(e.textLabelSecondary), 3)
-      ], 10, Q),
+          class: n([`${e.toggleClass}__item-secondary`])
+        }, C(e.textLabelSecondary), 3)
+      ], 10, Y),
       m("span", {
-        class: a([`${e.toggleClass}__artwork`]),
+        class: n([`${e.toggleClass}__artwork`]),
         role: "presentation"
       }, null, 2)
     ], 2));
   }
-}, Z = {
-  install: (e, t) => {
-    e.component("TFormGroup", I), e.component("TLabel", v), e.component("TInputField", F), e.component("TUploadFile", G), e.component("TCheckbox", $), e.component("TError", E), e.component("THint", N), e.component("TTextarea", D), e.component("TSelect", R), e.component("TGroupCheckbox", j), e.component("TGroupRadio", J), e.component("TToggle", W);
+}, ee = {
+  install: (e, a) => {
+    e.component("TFormGroup", M), e.component("TLabel", v), e.component("TInputField", j), e.component("TUploadFile", w), e.component("TCheckbox", V), e.component("TError", U), e.component("THint", N), e.component("TTextarea", D), e.component("TSelect", J), e.component("TGroupCheckbox", K), e.component("TGroupRadio", W), e.component("TToggle", Z);
   }
 };
 export {
-  Z as default
+  ee as default
 };
